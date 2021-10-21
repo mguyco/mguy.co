@@ -11,6 +11,16 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
+ * Workbox / ServiceWorker
+ */
+ if('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+    });
+}
+
+/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.

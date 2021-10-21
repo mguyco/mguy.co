@@ -31,6 +31,6 @@ class Tag extends Model
 
     public function projects()
     {
-        return $this->hasMany(ProjectTags::class, 'project_tags', 'project_id', 'id');
+        return $this->hasMany(ProjectTag::class, 'project_tags', 'project_id', 'id');
     }
 }

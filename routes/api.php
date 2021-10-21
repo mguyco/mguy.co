@@ -14,13 +14,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// create a user
+Route::group([
+    'prefix' => 'user'
+], function() {
+    Route::post('/', 'UserController@store');
+});
+
+// personal access tokens
 Route::group([
     'prefix' => 'token'
 ], function() {
-    Route::post('/', 'UserController@token');
-    Route::delete('/', 'UserController@token');
+    Route::post('/', 'TokenController@store');
+    Route::delete('/', 'TokenController@delete');
 });
 
+// contact form
+Route::group([
+    'prefix' => 'contact'
+], function() {
+    Route::post('/', 'ContactFormController@submit');
+});
+
+/* 
+ * 
+ * Sanctum middleware protected routes
+ * 
+ */
+
+// projects
 Route::group([
     'prefix' => 'projects',
     'middleware' => ['auth:sanctum']
@@ -36,6 +59,7 @@ Route::group([
     Route::delete('{id}/tags/{tagId}, ProjectTagController@delete');
 });
 
+// tags
 Route::group([
     'prefix' => 'tags',
     'middleware' => ['auth:sanctum']
@@ -50,6 +74,7 @@ Route::group([
     Route::get('{tagId}/projects', 'ProjectTagController@getProjectsByTag');
 });
 
+// scopes
 Route::group([
     'prefix' => 'scopes',
     'middleware' => ['auth:sanctum']
@@ -64,6 +89,7 @@ Route::group([
     Route::get('{id}/users', 'UserScopesController@getUsersByScope');
 });
 
+/*
 Route::group([
     'prefix' => 'user',
     'middleware' => ['auth:sanctum']
@@ -71,4 +97,8 @@ Route::group([
     Route::get('', function(Request $request) {
         return $request->user()->toArray();
     });
+
+    Route::delete('', 'UserController@delete');
+    Route::put('', 'UserController@update');
 });
+*/

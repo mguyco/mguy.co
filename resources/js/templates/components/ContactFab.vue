@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-none" v-if="!isMobile()">
         <ContactCard 
             :open="open"
             @close="open = false" />

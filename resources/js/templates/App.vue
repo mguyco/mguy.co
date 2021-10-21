@@ -1,15 +1,15 @@
 <!-- inertia render from 'routes/web.php' -->
 <template>
     <v-app>
-        <AppBar />
-        <ContactFab />
+        <TopAppBar />
+        <ThemeSwitchFab />
         <v-main>
             <Home />
-                <Divider />
+                <SectionDivider />
             <Experience />
-                <Divider />
+                <SectionDivider />
             <Projects />
-                <Divider />
+                <SectionDivider />
             <Contact />
         </v-main>
     </v-app>
@@ -17,15 +17,15 @@
 
 <script>
 // layout
-import AppBar from './components/AppBar'
-import ContactFab from './components/ContactFab'
-import Divider from './components/Divider'
+import TopAppBar from './components/TopAppBar'
+import SectionDivider from './components/SectionDivider'
+import ThemeSwitchFab from './components/ThemeSwitchFab'
 
-// pages
-import Home from './pages/Home'
-import Experience from './pages/Experience'
-import Projects from './pages/Projects'
-import Contact from './pages/Contact'
+// sections
+import Home from './sections/Home'
+import Experience from './sections/Experience'
+import Projects from './sections/Projects'
+import Contact from './sections/Contact'
 
 export default {
     // props passed from 'routes/web.php'
@@ -33,16 +33,54 @@ export default {
         projects: Array
     },
     components: {
-        AppBar,
-        ContactFab,
-        Divider,
+        // layout
+        TopAppBar,
+        SectionDivider,
+        ThemeSwitchFab,
+        // sections
         Home,
         Experience,
         Projects,
         Contact,
     },
     created() {
-        this.setProjects(this.projects) // this.$store.commit('item', { key: 'projects', value: this.projects })
+        this.setProjects(this.projects)
+
+        // check if device is using dark colors
+        const deviceTheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // match device colors with vuetify theme
+        if(deviceTheme.matches) {
+            this.$vuetify.theme.dark = true
+        }
+    },
+    mounted() {
+
+    },
+    methods: {
+
     }
 }
 </script>
+
+<style>
+.font-great-vibes {
+    font-family: 'Great Vibes', cursive;
+}
+
+.font-pacifico {
+    font-family: 'Pacifico', cursive;
+}
+
+.font-cookie {
+    font-family: 'Cookie', cursive;
+}
+
+.font-shadows-into-light {
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.text-shadow {
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+}
+</style>

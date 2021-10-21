@@ -16,9 +16,9 @@ use App\Models\Tag;
 |
 */
 
+// the one and only
 Route::get('/', function () {
     return Inertia::render('App', [
-        // props
         'projects' => Project::all(),
         'tags' => Tag::all()
     ]);

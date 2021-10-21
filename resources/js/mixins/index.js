@@ -5,10 +5,10 @@ Vue.use(VueScroll)
 
 export default {
     methods: {
-        setActivePage(page) {
+        setActiveSection(section) {
             this.$store.commit('item', { 
-                key: 'activePage', 
-                value: page 
+                key: 'activeSection', 
+                value: section
             })
         },
         setProjects(projects) {
@@ -17,9 +17,9 @@ export default {
                 value: projects
             })
         },
-        goToPage(page) {
-            this.$scrollTo('#' + page, { offset: -120 })
-            this.setActivePage(page)
+        goToSection(section) {
+            this.$scrollTo('#' + section, { offset: -120 })
+            this.setActiveSection(section)
         },
         getSize() {
             const bp = this.$vuetify.breakpoint.name
@@ -27,9 +27,14 @@ export default {
             return (bp == 'xs' | 'sm' ? 'small' : (bp == 'md' | 'lg' ? 'med' : 'large'))
         },
         onIntersect(entries) {
-            if(entries[0].isIntersecting === true) {
-                this.setActivePage(entries[0].target.id)
+            const section = entries[0]
+            
+            if(section.isIntersecting === true) {
+                this.setActiveSection(section.target.id)
             }
-        }
+        },
+        isMobile() {
+            return this.$vuetify.breakpoint.mobile
+        },
     }
 }

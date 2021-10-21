@@ -38,6 +38,6 @@ class Project extends Model
 
     public function getTagsAttribute()
     {
-        return $this->hasMany(ProjectTags::class)->get();
+        return $this->hasMany(ProjectTag::class)->get();
     }
 }

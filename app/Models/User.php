@@ -61,11 +61,6 @@ class User extends Authenticatable
 
     public function getScopesAttribute()
     {
-        return $this->userScopes()->get();
-    }
-
-    public function userScopes()
-    {
-        return $this->hasMany(UserScopes::class);
+        return $this->hasMany(UserScopes::class)->get();
     }
 }

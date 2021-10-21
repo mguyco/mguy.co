@@ -15,6 +15,6 @@ const mix = require('laravel-mix');
    .vue()
    .postCss('resources/css/app.css', 'public/css')
    .browserSync({
-     watch: true,
-     proxy: 'localhost:8000'
+     tunnel: true,
+     proxy: 'localhost'
    })

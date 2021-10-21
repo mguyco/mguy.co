@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
-use App\Models\ProjectTags;
+use App\Models\ProjectTag;
 use App\Models\Tag;
 
 class ProjectController extends Controller
@@ -65,14 +65,16 @@ class ProjectController extends Controller
 
     private function setProjectTags($projectId, $projectTags)
     {
-        ProjectTags::where('project_id', $projectId)->delete();
+        ProjectTag::where('project_id', $projectId)->delete();
+
+        if(!is_array($projectTags)) $projectTags = explode(',', $projectTags);
 
         $tags = Tag::whereRaw("LOWER(name) IN ('" . implode("','", array_map('strtolower', $projectTags)) . "')")->get();
 
         foreach($tags as $tag)
         {
             // create record
-            ProjectTags::create([
+            ProjectTag::create([
                 'project_id' => $projectId,
                 'tag_id' => $tag->id
             ]);

@@ -1,5 +1,5 @@
 <template>
-    <v-row class="page-divider my-15">
+    <v-row class="my-5">
         <v-col 
             cols="10"
             offset="1" 
