@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Laravel",
+        "description": "",
+        "url": "https://laravel.com",
+        "photo": "",
+        "isVendor": false
+    },
+    {
+        "name": "Inertia",
+        "description": "",
+        "url": "https://inertiajs.com",
+        "photo": "",
+        "isVendor": false
+    },
+    {
+        "name": "Vuetify",
+        "description": "",
+        "url": "https://vuetifyjs.com",
+        "photo": "",
+        "isVendor": false
+    },
+    {
+        "name": "Vue",
+        "description": "",
+        "url": "https://vuejs.org",
+        "photo": "",
+        "isVendor": false
+    },
+    {
+        "name": "Torque Pro",
+        "description": "",
+        "url": "https://torque-bhp.com",
+        "photo": "",
+        "isVendor": true
+    }
+]

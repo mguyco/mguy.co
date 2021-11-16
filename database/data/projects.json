@@ -1,0 +1,9 @@
+[
+    {
+        "title": "Torque Vue",
+        "description": "Torque Vue is a modern web dashboard for Torque Pro users that analyzes your vehicles real-time OBD2 data to calculate trends and record trips that can be viewed anywhere on any device. Get service reminder notifications and view your vehicles health report card. Track your fleet or whatever is in your driveway - quickly toggle between vehicles and compare data between your rides. You must have the Torque Pro app installed onto your device and connected to your vehicles OBD2 port before registering an account with Torque Vue.",
+        "photo": "https://i.ibb.co/8PBKjnD/New-Project-1.png",
+        "url": "https://github.com/mguyco/torque",
+        "repository": "https://github.com/mguyco/torque"
+    }
+]

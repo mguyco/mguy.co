@@ -51,7 +51,7 @@
 					xl="5">
 					<v-card :class="isMobile() ? '' : 'pa-5'">
 						<v-card-title>
-							Experience
+							History
 						</v-card-title>
 						<v-card-text>
 							<v-list>
@@ -60,7 +60,7 @@
 									:key="item.title">
 									<v-list-item-action>
 										<v-img
-											:class="item.image.width == 44 ? 'ml-2 mr-1' : ''"
+											:class="item.image.width == 44 ? `ml-${isMobile() ? 2 : 4} mr-1` : ''"
 											:src="item.image.url"
 											:width="isMobile() ? (item.image.width / 2) : item.image.width" />
 									</v-list-item-action>
@@ -88,9 +88,16 @@
 					</v-card>
 					<v-card class="pa-2 mt-10">
 						<v-card-text class="text-body-1">
-							Currently deep-diving into <a class="primary--text text--lighten-2" href="https://laravel.com/docs/8.x/sail" target="_blank">Laravel Sail</a> with <a class="primary--text text--lighten-2" href="https://www.docker.com" target="_blank">Docker</a> and <a class="primary--text text--lighten-2" href="https://inertiajs.com" target="_blank">InertiaJS</a>. 
-							Learning how to deploy from <a class="primary--text text--lighten-2" href="https://github.com/mguyco" target="_blank">GitHub</a> using <a class="primary--text text--lighten-2" href="https://docs.aws.amazon.com/codedeploy" target="_blank">AWS CodeDeploy</a> / <a class="primary--text text--lighten-2" href="https://aws.amazon.com/elasticbeanstalk" target="_blank">Elastic Beanstalk</a> / <a class="primary--text text--lighten-2" href="https://aws.amazon.com/ec2" target="_blank">EC2</a>. 
-							Always looking to learn cool things from the almighty <a class="primary--text text--lighten-2" href="https://laracasts.com/browse/all" target="_blank">Laracasts</a> community. 
+							Currently deep-diving into 
+							<a class="primary--text text--lighten-2" href="https://laravel.com/docs/8.x/sail" target="_blank">Laravel Sail</a> 
+							with <a class="primary--text text--lighten-2" href="https://www.docker.com" target="_blank">Docker</a> and 
+							<a class="primary--text text--lighten-2" href="https://inertiajs.com" target="_blank">InertiaJS</a>. 
+							Learning how to deploy from 
+							<a class="primary--text text--lighten-2" href="https://github.com/mguyco" target="_blank">GitHub</a> using 
+							<a class="primary--text text--lighten-2" href="https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html" target="_blank">AWS CodeDeploy</a> 
+							and <a class="primary--text text--lighten-2" href="https://www.digitalocean.com/products/app-platform" target="_blank">Digital Ocean App Platform</a>. 
+							Always looking to learn cool things from the almighty 
+							<a class="primary--text text--lighten-2" href="https://laracasts.com/browse/all" target="_blank">Laracasts</a> community. 
 						</v-card-text>
 					</v-card>
 				</v-col>
@@ -172,15 +179,15 @@ export default {
 
 		this.skills = [
 			{
-				key: 'HTML / JavaScript',
-				value: 90
-			},
-			{
-				key: 'CSS / Material Design',
+				key: 'HTML / JS / CSS',
 				value: 90
 			},
 			{
 				key: 'PHP / MySQL',
+				value: 90
+			},
+			{
+				key: 'XML / JSON',
 				value: 90
 			},
 			{
@@ -189,11 +196,11 @@ export default {
 			},
 			{
 				key: 'Laravel / InertiaJS',
-				value: 60
+				value: 70
 			},
 			{
-				key: 'MongDB / Redis',
-				value: 50
+				key: 'Ubuntu / CentOS',
+				value: 60
 			}
 		]
 	}

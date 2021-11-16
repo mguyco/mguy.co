@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Tag;
+use App\Models\ProjectTag;
 
 class Project extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * The table this model will use.
@@ -24,7 +27,9 @@ class Project extends Model
     protected $fillable = [
         'title',
         'description',
-        'photo'
+        'photo',
+        'url',
+        'repository'
     ];
 
     /**
@@ -33,7 +38,7 @@ class Project extends Model
      * @var array
      */
     protected $appends = [
-        'tags'
+        'tags',
     ];
 
     public function getTagsAttribute()

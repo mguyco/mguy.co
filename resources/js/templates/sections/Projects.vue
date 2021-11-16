@@ -58,14 +58,16 @@
 						</v-timeline>
 
 						<!-- desktop view -->
-						<v-timeline v-else>
+						<v-timeline align-top v-else>
 							<v-timeline-item 
 								v-for="(project, index) in projects"
-								class="pb-15 mb-15" 
+								class="pb-15 mb-15 project-item" 
 								:key="`project-${project.id}`"
-								:color="project.color">
+								:color="project.color"
+								small
+								fill-dot>
 								<template v-slot:opposite>
-									<div :class="`text-h3 font-weight-thin ${project.color}--text`">
+									<div :class="`text-h3 font-weight-thin ${project.color}--text project-title`">
 										{{ project.title }}
 									</div>
 									<div class="text-body-1">
@@ -80,30 +82,37 @@
 											</v-icon>
 											<a 
 												:href="vendor.data.url"
-												class="grey--text" 
+												class="project-vendor" 
 												target="_blank">
 												{{ vendor.data.name}}
 											</a>
 										</span>
 									</div>
-									<div class="mt-2">
-										<v-img 
-											:class="`float-${(index % 2 === 0 ? 'right' : 'left')} elevation-10`" 
-											width="400px" 
-											src="https://i.ibb.co/MfPCKd7/ucxbuilder.png" />
+									<div class="mt-8">
+										<a 
+											:href="project.photo"
+											target="_blank">
+											<v-img 
+												:class="`float-${(index % 2 === 0 ? 'right' : 'left')} project-photo`"  
+												:src="project.photo" 
+												:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.23))`"
+												 />
+										</a>
 									</div>
 								</template>
-								<v-card class="pa-5">
+								<v-card class="px-5 py-2">
 									<v-card-text>
-										<div class="project-text">
+										<div class="project-description">
 											{{ project.description }}
 										</div>
 										<div class="mt-5">
 											<v-chip 
 												v-for="tag in project.tags.filter(item => !item.data.isVendor)"
-												class="mx-1" 
+												class="mx-1 project-tag" 
 												:key="`project-${project.id}-tag-${tag.tag_id}`" 
-												:color="project.color"
+												:color="`${project.color} darken-2`"
+												:href="tag.data.url"
+												target="_blank" 
 												dark
 												label
 												small>
@@ -150,7 +159,15 @@ export default {
 		colorPicker() {
 			const index = Math.floor(Math.random() * (this.colorsAvailable.length - 1))
 			const color = this.colorsAvailable[index].toString().replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
-			const skip = ['black','brown','white','grey','blue-grey','yellow']
+			const skip = [
+				'black',
+				'brown',
+				'white',
+				'grey',
+				'blue-grey',
+				'yellow',
+				'lime'
+			]
 
 			if(skip.includes(color)) return this.colorPicker()
 
@@ -158,19 +175,59 @@ export default {
 
 			return color
 		},
+		hexToRGB(hex) {
+            return hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i
+                    ,(m, r, g, b) => '#' + r + r + g + g + b + b)
+            .substring(1).match(/.{2}/g)
+            .map(x => parseInt(x, 16)).join(',')
+        },
+        colorToHex(color) {
+			const values = color.split('-')
+
+			if(values.length == 2) {
+				color = values[0] + values[1].charAt(0).toUpperCase() + values[1].substr(1, values[1].length)
+			}
+			
+            return colors[color].base
+        },
+		colorToRGB(color) {
+			return this.hexToRGB(this.colorToHex(color))
+		}
 	},
 }
 </script>
 
 <style>
-.project-text {
+.project-item .project-vendor {
+	color: rgba(255,255,255,0.5);
+	transition: all 1s
+}
+
+.project-item .project-vendor:hover {
+	color: rgba(255,255,255,0.8);
+	transition: all 1s
+}
+
+.project-item .project-description {
 	font-family: 'Roboto', sans-serif;
 	font-size: 20px;
 	line-height: 1.6;
 	font-weight: 300;
 }
 
-.project-text.mobile {
+.project-item .project-description.mobile {
 	font-size: 15px;
 }
+
+/*
+.project-item .project-photo {
+	box-shadow: 0px 0px 65px 5px rgba(126,128,128,0.45);
+	transition: 1s linear all;
+}
+
+.project-item:hover .project-photo {
+	box-shadow: 0px 0px 505px 5px rgba(126,128,128,0.65);
+	transition: 1s linear all;
+}
+*/
 </style>

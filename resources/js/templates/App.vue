@@ -64,6 +64,10 @@ export default {
 </script>
 
 <style>
+a {
+    text-decoration: none;
+}
+
 .font-great-vibes {
     font-family: 'Great Vibes', cursive;
 }
