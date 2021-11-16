@@ -18,7 +18,10 @@ class CreateTagsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('photo');
+            $table->string('url');
+            $table->boolean('isVendor');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

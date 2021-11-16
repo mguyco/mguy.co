@@ -18,7 +18,10 @@ class CreateProjectsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('photo');
+            $table->string('url');
+            $table->string('repository');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
