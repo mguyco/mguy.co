@@ -17,5 +17,5 @@ const mix = require('laravel-mix');
    .browserSync({
      tunnel: false,
      https: false,
-     proxy: 'localhost'
+     proxy: 'localhost:80'
    })

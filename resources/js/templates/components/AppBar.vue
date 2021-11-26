@@ -7,7 +7,7 @@
         <div 
             :style="`font-size: ${(isMobile() ? 44 : 70)}px`"
             class="pa-3 primary--text">
-            <span class="font-great-vibes text-shadow">
+            <span class="font-great-vibes text-shadow text-gradient">
                 {{ title }}
             </span>
         </div>
@@ -141,5 +141,40 @@ export default {
 .gray-to-color:hover {
     filter: grayscale(0) !important;
     transition: all 1s linear;
+}
+
+/*
+.text-gradient {
+    background-image: linear-gradient(45deg, #067ee0, #83c1f3);
+    background-size: 100%;
+    background-repeat: repeat;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+*/
+
+.text-gradient {
+    background: linear-gradient(to right, #2196f3 20%, #77b5e7 40%, #54a9ee 60%, #2196f3 80%);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: shine 3s linear infinite;
+    animation: shine 3s linear infinite;
+}
+
+@-webkit-keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }
 </style>

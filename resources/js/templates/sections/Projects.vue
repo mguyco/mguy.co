@@ -25,32 +25,43 @@
 							align-top>
 							<v-timeline-item 
 								v-for="project in projects"
-								class="pb-10 pr-3" 
+								class="pb-10 pr-3 project-item mobile" 
 								:key="`project-${project.id}`"
 								:color="project.color">
-								<div :class="`text-h6 font-weight-thin ${project.color}--text`">
+								<div :class="`text-h6 font-weight-light ${project.color}--text project-title`">
 									{{ project.title }}
 								</div>
-								<div class="py-1 text-caption grey--text">
+								<div class="text-caption">
 									<span 
 										v-for="(vendor,index) in project.tags.filter(item => item.data.isVendor)"
 										:key="vendor.data.name">
-										<span v-if="index > 0">-</span>
-										{{ vendor.data.name}}
+										<v-icon 
+											v-if="index > 0 || project.tags.filter(item => item.data.isVendor).length == 1" 
+											class="pb-1"
+											:color="project.color"
+											small>
+											mdi-menu-right
+										</v-icon>
+										<a 
+											:href="vendor.data.url"
+											class="project-vendor" 
+											target="_blank">
+											{{ vendor.data.name}}
+										</a>
 									</span>
 								</div>
-								<div class="project-text mobile">
-									{{ project.description }}
+								<div class="project-description">
+									<span v-html="project.description" />
 								</div>
-								<div>
+								<div class="pt-3">
 									<v-chip 
 										v-for="tag in project.tags.filter(item => !item.data.isVendor)"
-										class="mx-1" 
+										class="mx-1 project-tag" 
 										:key="`project-${project.id}-tag-${tag.tag_id}`" 
 										:color="project.color"
 										dark
 										label
-										x-small>
+										small>
 										{{ tag.data.name }}
 									</v-chip>
 								</div>
@@ -61,7 +72,7 @@
 						<v-timeline align-top v-else>
 							<v-timeline-item 
 								v-for="(project, index) in projects"
-								class="pb-15 mb-15 project-item" 
+								:class="`pb-15 mb-15 project-item ${$vuetify.theme.dark === true ? 'dark' : ''}`" 
 								:key="`project-${project.id}`"
 								:color="project.color"
 								small
@@ -90,20 +101,20 @@
 									</div>
 									<div class="mt-8">
 										<a 
-											:href="project.photo"
+											:href="project.url"
 											target="_blank">
 											<v-img 
 												:class="`float-${(index % 2 === 0 ? 'right' : 'left')} project-photo`"  
 												:src="project.photo" 
-												:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.23))`"
-												 />
+												:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.${$vuetify.theme.dark == true ? '2' : '5'}3))`" 
+											/>
 										</a>
 									</div>
 								</template>
 								<v-card class="px-5 py-2">
 									<v-card-text>
 										<div class="project-description">
-											{{ project.description }}
+											<span v-html="project.description" />
 										</div>
 										<div class="mt-5">
 											<v-chip 
@@ -198,13 +209,15 @@ export default {
 </script>
 
 <style>
-.project-item .project-vendor {
+.project-item.dark .project-vendor,
+.project-item.dark .project-description a {
 	color: rgba(255,255,255,0.5);
 	transition: all 1s
 }
-
-.project-item .project-vendor:hover {
-	color: rgba(255,255,255,0.8);
+ 
+.project-item.dark .project-vendor:hover,
+.project-item.dark .project-description a:hover {
+	color: rgba(255,255,255,1);
 	transition: all 1s
 }
 
@@ -215,19 +228,7 @@ export default {
 	font-weight: 300;
 }
 
-.project-item .project-description.mobile {
-	font-size: 15px;
+.project-item.mobile .project-description {
+	font-size: 1rem;
 }
-
-/*
-.project-item .project-photo {
-	box-shadow: 0px 0px 65px 5px rgba(126,128,128,0.45);
-	transition: 1s linear all;
-}
-
-.project-item:hover .project-photo {
-	box-shadow: 0px 0px 505px 5px rgba(126,128,128,0.65);
-	transition: 1s linear all;
-}
-*/
 </style>

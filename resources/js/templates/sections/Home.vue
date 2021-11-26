@@ -14,7 +14,7 @@
                     offset-xl="3">
                     <v-img 
                         :width="`${(isMobile() ? (sectionHeight < 600 ? 150 : 200) : iconWidth)}px`"   
-                        style="margin-left:23px" 
+                        class="worker-icon" 
                         height="auto" 
                         src="https://i.ibb.co/cYtrv6b/worker.png" />
                 </v-col>
@@ -26,12 +26,12 @@
                     offset-lg="3"
                     xl="6"
                     offset-xl="3">
-                    <div :class="`text-${($vuetify.breakpoint.smAndDown ? 'body-1 font-weight-bold' : 'h5')} px-2`">
-                        Experienced Full-Stack Software Engineer
+                    <div :class="`text-${(isMobile() ? 'h6' : 'h4')} px-2`">
+                        Full-Stack Software Engineer
                     </div>
-                    <div :class="`text-body-1 mt-1 font-weight-light px-2`">
-                        For the last 5 years, I have been developing web apps fueled by company workflow redesigns with a strength for building smart user experiences and custom API's centered around unified communication integrations. 
-                        I am currently looking for opportunities to expand my skillset and bring my exerpeince to the next level.
+                    <div :class="`text-${(isMobile() ? 'body-1' : 'h6')} font-weight-light mt-1 px-2`">
+                        For the last 5 years, I have been developing full-stack web apps fueled by workflow redesigns with a strength for building smart user experiences. 
+                        I am currently open to new opportunities that can leverage my skills and bring my experience to the next level.
                     </div>
                 </v-col>
             </v-row>

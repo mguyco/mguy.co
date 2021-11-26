@@ -1,7 +1,7 @@
 <!-- inertia render from 'routes/web.php' -->
 <template>
     <v-app>
-        <TopAppBar />
+        <AppBar />
         <ThemeSwitchFab />
         <v-main>
             <Home />
@@ -17,7 +17,7 @@
 
 <script>
 // layout
-import TopAppBar from './components/TopAppBar'
+import AppBar from './components/AppBar'
 import SectionDivider from './components/SectionDivider'
 import ThemeSwitchFab from './components/ThemeSwitchFab'
 
@@ -30,11 +30,12 @@ import Contact from './sections/Contact'
 export default {
     // props passed from 'routes/web.php'
     props: {
-        projects: Array
+        projects: Array,
+        wakadata: Array,
     },
     components: {
         // layout
-        TopAppBar,
+        AppBar,
         SectionDivider,
         ThemeSwitchFab,
         // sections
@@ -45,6 +46,11 @@ export default {
     },
     created() {
         this.setProjects(this.projects)
+
+        this.$store.commit('item', {
+            key: 'wakadata',
+            value: this.wakadata
+        })
 
         // check if device is using dark colors
         const deviceTheme = window.matchMedia('(prefers-color-scheme: dark)');

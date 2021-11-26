@@ -5,5 +5,12 @@
         "photo": "https://i.ibb.co/8PBKjnD/New-Project-1.png",
         "url": "https://github.com/mguyco/torque",
         "repository": "https://github.com/mguyco/torque"
+    },
+    {
+        "title": "My Website",
+        "description": "This website was my first dive into building a Laravel application using Sail. The frontend is built in VueJS and uses the Vuetify and InertiaJS plugins. I used Laravel Forge for the deployment platform that runs on a DigitalOcean droplet.",
+        "photo": "https://i.ibb.co/8PBKjnD/New-Project-1.png",
+        "url": "https://github.com/mguyco/torque",
+        "repository": "https://github.com/mguyco/mguy.co"
     }
 ]

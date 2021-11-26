@@ -3,4 +3,5 @@ export const state = {
     activeSection: 'home',
     sections: ['home','experience','projects','contact'],
     projects: [],
+    wakadata: []
 }
