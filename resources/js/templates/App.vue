@@ -74,22 +74,6 @@ a {
     text-decoration: none;
 }
 
-.font-great-vibes {
-    font-family: 'Great Vibes', cursive;
-}
-
-.font-pacifico {
-    font-family: 'Pacifico', cursive;
-}
-
-.font-cookie {
-    font-family: 'Cookie', cursive;
-}
-
-.font-shadows-into-light {
-    font-family: 'Shadows Into Light', cursive;
-}
-
 .text-shadow {
     text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
 }

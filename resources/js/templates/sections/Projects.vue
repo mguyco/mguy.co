@@ -69,7 +69,9 @@
 						</v-timeline>
 
 						<!-- desktop view -->
-						<v-timeline align-top v-else>
+						<v-timeline 
+							align-top 
+							v-else>
 							<v-timeline-item 
 								v-for="(project, index) in projects"
 								:class="`pb-15 mb-15 project-item ${$vuetify.theme.dark === true ? 'dark' : ''}`" 
@@ -77,6 +79,13 @@
 								:color="project.color"
 								small
 								fill-dot>
+								<template v-slot:icon>
+									<v-avatar 
+										size="16" 
+										class="color-picker"
+										:color="project.color" 
+										@click="project.color = randomColor()" />
+								</template>
 								<template v-slot:opposite>
 									<div :class="`text-h3 font-weight-thin ${project.color}--text project-title`">
 										{{ project.title }}
@@ -119,17 +128,15 @@
 										<div class="mt-5">
 											<v-chip 
 												v-for="tag in project.tags.filter(item => !item.data.isVendor)"
-												class="mx-1 project-tag" 
+												class="mx-1 text-body-2 project-tag" 
 												:key="`project-${project.id}-tag-${tag.tag_id}`" 
-												:color="`${project.color} darken-2`"
+												:color="`${project.color} darken-4`"
 												:href="tag.data.url"
 												target="_blank" 
 												dark
 												label
 												small>
-												<span class="text-body-2">
-													{{ tag.data.name }}
-												</span>
+												{{ tag.data.name }}
 											</v-chip>
 										</div>
 									</v-card-text>
@@ -150,26 +157,32 @@ export default {
 	data() {
 		return {
 			projects: [],
-			colorList: [],
 			colorsInUse: [],
 			colorsAvailable: [],
 		}
 	},
+	computed: {
+		colorList() {
+			return Object.keys(Object.assign({}, colors))
+		}
+	},
 	mounted() {
-		this.colorList = Object.assign({}, colors)
-		this.colorsAvailable = Object.keys(this.colorList)
+		this.colorsAvailable = this.colorList
 
 		this.projects = this.$store.getters.item('projects').map(project => {
 			return {
 				...project,
-				color: this.colorPicker()
+				color: this.randomColor()
 			}
 		})
 	},
 	methods: {
-		colorPicker() {
+		colorName(name) {
+			return name.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
+		},
+		randomColor() {
 			const index = Math.floor(Math.random() * (this.colorsAvailable.length - 1))
-			const color = this.colorsAvailable[index].toString().replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
+			const color = this.colorName(this.colorsAvailable[index].toString())
 			const skip = [
 				'black',
 				'brown',
@@ -180,9 +193,7 @@ export default {
 				'lime'
 			]
 
-			if(skip.includes(color)) return this.colorPicker()
-
-			this.colorsAvailable.splice(index, 1);
+			if(skip.includes(color)) return this.randomColor()
 
 			return color
 		},
@@ -198,17 +209,21 @@ export default {
 			if(values.length == 2) {
 				color = values[0] + values[1].charAt(0).toUpperCase() + values[1].substr(1, values[1].length)
 			}
-			
-            return colors[color].base
+
+			return colors[color].base
         },
 		colorToRGB(color) {
 			return this.hexToRGB(this.colorToHex(color))
-		}
+		},
 	},
 }
 </script>
 
 <style>
+.project-item {
+	transition: all 0.7s linear;
+}
+
 .project-item.dark .project-vendor,
 .project-item.dark .project-description a {
 	color: rgba(255,255,255,0.5);
@@ -219,6 +234,10 @@ export default {
 .project-item.dark .project-description a:hover {
 	color: rgba(255,255,255,1);
 	transition: all 1s
+}
+
+.project-item .color-picker {
+	cursor: pointer;
 }
 
 .project-item .project-description {

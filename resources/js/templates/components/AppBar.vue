@@ -156,15 +156,15 @@ export default {
 */
 
 .text-gradient {
-    background: linear-gradient(to right, #2196f3 20%, #77b5e7 40%, #54a9ee 60%, #2196f3 80%);
+    background: linear-gradient(to right, #2196f3 20%, #0c67b1 40%, #54a9ee 60%, #2196f3 80%);
     background-size: 200% auto;
     color: #000;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-animation: shine 3s linear infinite;
-    animation: shine 3s linear infinite;
+    -webkit-animation: shine 15s linear infinite;
+    animation: shine 15s linear infinite;
 }
 
 @-webkit-keyframes shine {

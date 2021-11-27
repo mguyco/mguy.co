@@ -22,111 +22,106 @@
 					xl="5">
 					<v-card :class="isMobile() ? '' : 'pa-5'">
 						<v-card-title>
-							Software Skills
+							<h1 class="font-architects-daughter">
+								<div class="text-gradient">
+									Skills
+								</div>
+							</h1>
 						</v-card-title>
 						<v-card-text>
-							<!--
-							<v-row
-								v-for="item in skills" 
-								:key="item.name" 
-								justify="space-around" 
-								align="center">
-								<v-col cols="6" class="text-body-1">
-									{{ item.name }}
-								</v-col>
-								<v-col cols="5">
-									<v-progress-linear 
-										height="10" 
-										color="primary"
-										:value="item.percent"
-										striped />
-								</v-col>
-							</v-row>
-							-->
 							<v-row 
+								v-for="item in skills"
+								:key="item.title" 
 								justify="space-around"
 								align="center">
 								<v-col cols="6">
 									<div class="text-body-1 text--primary">
-										Frontend Designing
+										{{ item.title }}
 									</div>
 									<div class="text-caption text--secondary">
-										Creating easy user experiences
+										{{ item.subtitle }}
 									</div>
 								</v-col>
 								<v-col cols="5">
 									<v-progress-linear 
 										height="10" 
 										color="primary"
-										value="90" 
+										:value="item.percent" 
 										striped />
 								</v-col>
 							</v-row>
-							<v-row 
-								justify="space-around"
-								align="center">
-								<v-col cols="6">
-									<div class="text-body-1 text--primary">
-										Backend Development
-									</div>
-									<div class="text-caption text--secondary">
-										Designing RESTful API's
-									</div>
-								</v-col>
-								<v-col cols="5">
-									<v-progress-linear 
-										height="10" 
-										color="primary"
-										value="80" 
-										striped />
-								</v-col>
-							</v-row>
-							<v-row 
-								justify="space-around"
-								align="center">
-								<v-col cols="6">
-									<div class="text-body-1 text--primary">
-										Security &amp; Single-Sign-On
-									</div>
-									<div class="text-caption text--secondary">
-										Build secure gated routes
-									</div>
-								</v-col>
-								<v-col cols="5">
-									<v-progress-linear 
-										height="10" 
-										color="primary"
-										value="70" 
-										stream
-										striped />
-								</v-col>
-							</v-row>
-							<v-row 
-								justify="space-around"
-								align="center">
-								<v-col cols="6">
-									<div class="text-body-1 text--primary">
-										Mockup &amp; Presentation
-									</div>
-									<div class="text-caption text--secondary">
-										Quickly deploy and share proof of concepts
-									</div>
-								</v-col>
-								<v-col cols="5">
-									<v-progress-linear 
-										height="10" 
-										color="primary"
-										value="70" 
-										striped />
-								</v-col>
-							</v-row>
+						</v-card-text>
+					</v-card>
+					<v-card class="pa-2 mt-15">
+						<v-card-text class="text-body-1">
+							Currently deep-diving into 
+							<a class="primary--text text--lighten-2" href="https://laravel.com/docs/8.x/sail#introduction" target="_blank">Laravel Sail</a> 
+							with <a class="primary--text text--lighten-2" href="https://www.docker.com" target="_blank">Docker</a> and 
+							<a class="primary--text text--lighten-2" href="https://inertiajs.com" target="_blank">InertiaJS</a>. 
+							Learning how to deploy from 
+							<a class="primary--text text--lighten-2" href="https://github.com/mguyco" target="_blank">GitHub</a> using 
+							<a class="primary--text text--lighten-2" href="https://forge.laravel.com" target="_blank">Forge</a> 
+							and <a class="primary--text text--lighten-2" href="https://www.digitalocean.com/products/app-platform" target="_blank">Digital Ocean App Platform</a>. 
+							Always looking to learn cool things and binge watching 
+							<a class="primary--text text--lighten-2" href="https://laracasts.com/browse/all" target="_blank">Laracasts</a>. 
+						</v-card-text>
+					</v-card>
+				</v-col>
+				<v-col 
+					sm="12"
+					md="10"
+					lg="8" 
+					xl="5">
+					<v-card :class="isMobile() ? '' : 'pa-5'">
+						<v-card-title>
+							<h1 class="font-architects-daughter">
+								<div class="text-gradient">
+									History
+								</div>
+							</h1>
+						</v-card-title>
+						<v-card-text>
+							<v-list>
+								<v-list-item
+									v-for="item in history"
+									:key="item.title">
+									<v-list-item-action>
+										<v-img
+											:class="item.image.width == 44 ? `ml-${isMobile() ? 2 : 4} mr-1` : ''"
+											:src="item.image.url"
+											:width="isMobile() ? (item.image.width / 2) : item.image.width" />
+									</v-list-item-action>
+									<v-list-item-content>
+										<v-list-item-title class="text-body-1">
+											{{ item.title }}
+										</v-list-item-title>
+										<v-list-item-subtitle class="text-caption">
+											{{ item.subtitle }}
+										</v-list-item-subtitle>
+										<v-list-item-subtitle 
+											v-if="isMobile()"
+											class="text-caption text--secondary">
+											{{ item.from }} - {{ item.to }}
+										</v-list-item-subtitle>
+									</v-list-item-content>
+									<v-list-item-action 
+										v-if="!isMobile()"
+										class="text--secondary">
+										{{ item.from }} - {{ item.to }}
+									</v-list-item-action>
+								</v-list-item>
+							</v-list>
 						</v-card-text>
 					</v-card>
 					<v-card :class="`mt-10 ${isMobile() ? '' : 'pa-5'}`">
 						<v-card-title>
 							<v-row>
 								<v-col cols="6">
-									Code Activity
+									<h1 class="font-architects-daughter">
+										<div class="text-gradient">
+											WakaTime
+										</div>
+									</h1>
 								</v-col>
 								<v-col cols="6" align="right">
 									<v-tooltip top>
@@ -173,63 +168,7 @@
 							</v-row>
 						</v-card-text>
 					</v-card>
-				</v-col>
-				<v-col 
-					sm="12"
-					md="10"
-					lg="8" 
-					xl="5">
-					<v-card :class="isMobile() ? '' : 'pa-5'">
-						<v-card-title>
-							History
-						</v-card-title>
-						<v-card-text>
-							<v-list>
-								<v-list-item
-									v-for="item in experience"
-									:key="item.title">
-									<v-list-item-action>
-										<v-img
-											:class="item.image.width == 44 ? `ml-${isMobile() ? 2 : 4} mr-1` : ''"
-											:src="item.image.url"
-											:width="isMobile() ? (item.image.width / 2) : item.image.width" />
-									</v-list-item-action>
-									<v-list-item-content>
-										<v-list-item-title class="text-body-1">
-											{{ item.title }}
-										</v-list-item-title>
-										<v-list-item-subtitle class="text-caption">
-											{{ item.subtitle }}
-										</v-list-item-subtitle>
-										<v-list-item-subtitle 
-											v-if="isMobile()"
-											class="text-caption text--secondary">
-											{{ item.from }} - {{ item.to }}
-										</v-list-item-subtitle>
-									</v-list-item-content>
-									<v-list-item-action 
-										v-if="!isMobile()"
-										class="text--secondary">
-										{{ item.from }} - {{ item.to }}
-									</v-list-item-action>
-								</v-list-item>
-							</v-list>
-						</v-card-text>
-					</v-card>
-					<v-card class="pa-2 mt-10">
-						<v-card-text class="text-body-1">
-							Currently deep-diving into 
-							<a class="primary--text text--lighten-2" href="https://laravel.com/docs/8.x/sail#introduction" target="_blank">Laravel Sail</a> 
-							with <a class="primary--text text--lighten-2" href="https://www.docker.com" target="_blank">Docker</a> and 
-							<a class="primary--text text--lighten-2" href="https://inertiajs.com" target="_blank">InertiaJS</a>. 
-							Learning how to deploy from 
-							<a class="primary--text text--lighten-2" href="https://github.com/mguyco" target="_blank">GitHub</a> using 
-							<a class="primary--text text--lighten-2" href="https://forge.laravel.com" target="_blank">Forge</a> 
-							and <a class="primary--text text--lighten-2" href="https://www.digitalocean.com/products/app-platform" target="_blank">Digital Ocean App Platform</a>. 
-							Always looking to learn cool things and binge watching 
-							<a class="primary--text text--lighten-2" href="https://laracasts.com/browse/all" target="_blank">Laracasts</a>. 
-						</v-card-text>
-					</v-card>
+					
 				</v-col>
 			</v-row>
 			<v-row class="mt-15 ml-5 pa-5" justify="space-around">
@@ -258,10 +197,8 @@ export default {
 	data() {
 		return {
 			icons: [],
-			experience: [],
+			history: [],
 			skills: [],
-			langs: [],
-			wakatime: null
 		}
 	},
 	mounted() {
@@ -280,7 +217,7 @@ export default {
 			//windows: '<path fill="#00ADEF" d="M126 1.637l-67 9.834v49.831l67-.534zM1.647 66.709l.003 42.404 50.791 6.983-.04-49.057zm56.82.68l.094 49.465 67.376 9.509.016-58.863zM1.61 19.297l.047 42.383 50.791-.289-.023-49.016z"></path>',
 		}
 
-		this.experience = [
+		this.history = [
 			{
 				title: 'Senior Software Engineer',
 				subtitle: 'Developing smart full-stack applications',
@@ -313,67 +250,64 @@ export default {
 			},
 		]
 
-		this.langs = [
-			{
-				name: 'HTML',
-				rating: 100,
-			},
-			{
-				name: 'CSS',
-				rating: 90,
-			},
-			{
-				name: 'JS',
-				rating: 90,
-			},
-			{
-				name: 'PHP',
-				rating: 80,
-			},
-		]
-
-		this.databases = [
-			{
-				name: 'MySQL',
-				rating: 80,
-			},
-			{
-				name: 'MSSQL',
-				rating: 70,
-			},
-			{
-				name: 'MongoDB',
-				rating: 60,
-			}
-		]
 		this.skills = [
 			{
-				name: 'HTML / JS / CSS',
+				title: 'Frontend Designing',
+				subtitle: 'Creating easy user experiences',
 				percent: 90
 			},
 			{
-				name: 'PHP / MySQL',
-				percent: 90
-			},
-			{
-				name: 'XML / JSON',
-				percent: 90
-			},
-			{
-				name: 'VueJS / Vuetify',
+				title: 'Security & Authentication',
+				subtitle: 'Build secure gated routes',
 				percent: 80
 			},
 			{
-				name: 'Laravel / InertiaJS',
+				title: 'Backend Development',
+				subtitle: 'Designing RESTful API\'s',
+				percent: 80
+			},
+			{
+				title: 'Database Architecture',
+				subtitle: 'RDBMS and NoSQL experience',
 				percent: 70
 			},
 			{
-				name: 'Ubuntu / CentOS',
-				percent: 60
-			}
+				title: 'Third-Party Integration',
+				subtitle: 'Use existing and familiar apps',
+				percent: 90
+			},
 		]
-
-		//this.skills = this.wakatime.data.filter(item => item.percent > 3)
 	}
 }
 </script>
+
+<style>
+#experience .v-card .v-card__title h1 {
+	font-size: 2rem;
+	font-weight: 400;
+	letter-spacing: 3px;
+}
+
+#experience .text-gradient {
+    background: linear-gradient(to right, #888 20%, #888 40%, #ccc 60%, #888 80%);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: shine 5s linear infinite;
+    animation: shine 5s linear infinite;
+}
+
+@-webkit-keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+</style>

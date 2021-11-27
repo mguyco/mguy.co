@@ -10,8 +10,14 @@
     <meta name="msapplication-starturl" content="/index.html" />
     <title>{{ env('APP_NAME') }}</title>
 
-    <!-- pwa manifest -->
+    <!-- pwa -->
     <link rel="manifest" href="pwa-manifest.json" />
+
+    <!-- mix css -->
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+
+    <!-- mix js -->
+    <script src="{{ mix('/js/app.js') }}" defer></script>  
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,14 +26,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cookie&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
-
-    <!-- mix css -->
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-
-    <!-- mix js -->
-    <script src="{{ mix('/js/app.js') }}" defer></script>  
+    <style>
+        .font-great-vibes { font-family: 'Great Vibes', cursive; }
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+        .font-cookie { font-family: 'Cookie', cursive; }
+        .font-shadows-into-light { font-family: 'Shadows Into Light', cursive; }
+        .font-architects-daughter { font-family: 'Architects Daughter', cursive; }
+    </style>
 </head>
 <body>
     <!-- inertiaJS -->
