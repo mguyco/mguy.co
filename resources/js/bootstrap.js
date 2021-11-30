@@ -1,4 +1,6 @@
-window._ = require('lodash');
+//window._ = require('lodash');
+
+process.env.VUE_APP_VERSION = require('./../../package.json').version
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -12,13 +14,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
  * Workbox / ServiceWorker
- */
+ 
  if('serviceWorker' in navigator) {
     // Use the window load event to keep the page load performant
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js');
     });
 }
+*/
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

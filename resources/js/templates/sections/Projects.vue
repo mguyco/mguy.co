@@ -9,9 +9,11 @@
 				<v-row no-gutters>
 					<v-col align="center">
 						<div 
-							class="font-shadows-into-light text-shadow mt-3 primary--text" 
+							class="font-shadows-into-light" 
 							:style="`font-size:${ $vuetify.breakpoint.width > 800 ? 72 : 44 }px`">
-							Projects
+							<div class="text-shine text-shadow">
+								Projects
+							</div>
 						</div>
 					</v-col>
 				</v-row>
@@ -87,10 +89,10 @@
 										@click="project.color = randomColor()" />
 								</template>
 								<template v-slot:opposite>
-									<div :class="`text-h3 font-weight-thin ${project.color}--text project-title`">
+									<div :class="`text-h3 font-weight-thin ${project.color}--text project-title d-none`">
 										{{ project.title }}
 									</div>
-									<div class="text-body-1">
+									<div class="text-body-1 d-none">
 										<span 
 											v-for="(vendor,index) in project.tags.filter(item => item.data.isVendor)"
 											:key="vendor.data.name">
@@ -104,18 +106,18 @@
 												:href="vendor.data.url"
 												class="project-vendor" 
 												target="_blank">
-												{{ vendor.data.name}}
+												{{ vendor.data.name }}
 											</a>
 										</span>
 									</div>
-									<div class="mt-8">
+									<div>
 										<a 
 											:href="project.url"
 											target="_blank">
 											<v-img 
 												:class="`float-${(index % 2 === 0 ? 'right' : 'left')} project-photo`"  
 												:src="project.photo" 
-												:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.${$vuetify.theme.dark == true ? '2' : '5'}3))`" 
+												:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.${$vuetify.theme.dark === true ? '2' : '5'}3))`" 
 											/>
 										</a>
 									</div>
@@ -123,14 +125,14 @@
 								<v-card class="px-5 py-2">
 									<v-card-text>
 										<div class="project-description">
-											<span v-html="project.description" />
+											<span v-html="project.description.replaceAll('<a href', '<a class=\'' + project.color + '--text text--darken-1\' href')" />
 										</div>
 										<div class="mt-5">
 											<v-chip 
 												v-for="tag in project.tags.filter(item => !item.data.isVendor)"
 												class="mx-1 text-body-2 project-tag" 
 												:key="`project-${project.id}-tag-${tag.tag_id}`" 
-												:color="`${project.color} darken-4`"
+												:color="`${project.color} darken-${$vuetify.theme.dark === true ? 3 : 1}`"
 												:href="tag.data.url"
 												target="_blank" 
 												dark
@@ -224,6 +226,18 @@ export default {
 	transition: all 0.7s linear;
 }
 
+.project-item .project-vendor,
+.project-item .project-description a {
+	color: rgba(55,55,55,0.5);
+	transition: all 1s
+}
+ 
+.project-item .project-vendor:hover,
+.project-item .project-description a:hover {
+	color: rgba(55,55,55,0.75);
+	transition: all 1s
+}
+
 .project-item.dark .project-vendor,
 .project-item.dark .project-description a {
 	color: rgba(255,255,255,0.5);
@@ -249,5 +263,17 @@ export default {
 
 .project-item.mobile .project-description {
 	font-size: 1rem;
+}
+
+#projects .text-shine {
+    background: linear-gradient(to right, #2196f3 20%, #7406f1 40%, #54a9ee 60%, #2196f3 80%);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: shine 5s linear infinite;
+    animation: shine 5s linear infinite;
 }
 </style>

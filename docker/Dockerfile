@@ -1,7 +1,5 @@
 FROM ubuntu:21.04
 
-LABEL maintainer="Taylor Otwell"
-
 ARG WWWGROUP
 
 WORKDIR /var/www/html
@@ -32,10 +30,6 @@ RUN apt-get update \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y nodejs \ 
-    #&& npm update \ 
-    #&& npm install vue \ 
-    #&& npm install vuetify@2.5 \ 
-    #&& npm install @inertiajs/inertia @inertiajs/inertia-vue \ 
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \ 
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list \
     && apt-get update \

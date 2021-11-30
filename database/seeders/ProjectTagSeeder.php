@@ -17,7 +17,7 @@ class ProjectTagSeeder extends Seeder
     {
         ProjectTag::truncate();
 
-        $projectTags = json_decode(File::get('database/data/projectTags.json'));
+        $projectTags = json_decode(File::get('database/json/projectTags.json'));
 
         foreach($projectTags as $projectTag) {
             ProjectTag::create([

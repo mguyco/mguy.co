@@ -12,10 +12,13 @@ const mix = require('laravel-mix');
  */
 
  mix.js('resources/js/app.js', 'public/js')
-   .vue()
-   .postCss('resources/css/app.css', 'public/css')
-   .browserSync({
-     tunnel: false,
-     https: false,
-     proxy: 'localhost:80'
-   })
+    .vue({ runtimeOnly: true })
+    .alias({ '@': 'resources/js' })
+    .postCss('resources/css/app.css', 'public/css')
+    .browserSync({
+        proxy: 'localhost',
+        open: true
+        //tunnel: true,
+        //https: true
+    })
+    .version()

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+<title>{{ env('APP_NAME') }}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -8,10 +9,9 @@
     <meta name="application-name" content="{{ env('APP_NAME') }}" />
     <meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}" />
     <meta name="msapplication-starturl" content="/index.html" />
-    <title>{{ env('APP_NAME') }}</title>
 
-    <!-- pwa -->
-    <link rel="manifest" href="pwa-manifest.json" />
+    <!-- csrf token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- mix css -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
@@ -36,6 +36,9 @@
         .font-shadows-into-light { font-family: 'Shadows Into Light', cursive; }
         .font-architects-daughter { font-family: 'Architects Daughter', cursive; }
     </style>
+
+    <!-- ziggy -->
+    @routes
 </head>
 <body>
     <!-- inertiaJS -->

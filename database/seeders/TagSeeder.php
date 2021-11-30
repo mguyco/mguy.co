@@ -17,7 +17,7 @@ class TagSeeder extends Seeder
     {
         Tag::truncate();
 
-        $tags = json_decode(File::get('database/data/tags.json'));
+        $tags = json_decode(File::get('database/json/tags.json'));
 
         foreach($tags as $tag) {
             Tag::create([

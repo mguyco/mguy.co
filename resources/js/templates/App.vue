@@ -3,6 +3,8 @@
     <v-app>
         <AppBar />
         <ThemeSwitchFab />
+        <Snackbar />
+        
         <v-main>
             <Home />
                 <SectionDivider />
@@ -20,6 +22,7 @@
 import AppBar from './components/AppBar'
 import SectionDivider from './components/SectionDivider'
 import ThemeSwitchFab from './components/ThemeSwitchFab'
+import Snackbar from './components/Snackbar'
 
 // sections
 import Home from './sections/Home'
@@ -38,6 +41,7 @@ export default {
         AppBar,
         SectionDivider,
         ThemeSwitchFab,
+        Snackbar,
         // sections
         Home,
         Experience,
@@ -76,5 +80,16 @@ a {
 
 .text-shadow {
     text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+}
+
+@-webkit-keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }
 </style>

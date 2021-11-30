@@ -10,9 +10,11 @@
 				offset-lg="2"
 				align="center">
 				<div 
-					class="font-shadows-into-light text-shadow primary--text" 
+					class="font-shadows-into-light" 
 					:style="`font-size:${ $vuetify.breakpoint.width > 800 ? 50 : 32 }px`">
-					Want to know more? Let's talk
+					<div class="text-shine text-shadow">
+						Want to know more? Let's talk
+					</div>
 				</div>
 				<v-img 
 					class="my-5"
@@ -26,11 +28,7 @@
 					:color="sheetColor"
 					class="py-15"
 					dark>
-					<v-form 
-						ref="form" 
-						v-model="form.valid"
-						:disabled="form.data.processing" 
-						lazy-validation>
+					<v-form v-model="form.valid">
 						<v-row>
 							<v-col 
 								cols="12"
@@ -48,12 +46,13 @@
 									</v-col>
 									<v-col cols="5">
 										<v-text-field 
-											v-model="form.data.name" 
+											name="name"
 											type="text" 
 											placeholder="Your name"
-											:rules="form.rules.name"
+											v-model="form.data.name" 
+											:rules="[form.rules.required, form.rules.name]"
 											:background-color="inputColor" 
-											required 
+											autofocus 
 											outlined />
 									</v-col>
 								</v-row>
@@ -69,12 +68,12 @@
 									</v-col>
 									<v-col cols="5">
 										<v-text-field 
-											v-model="form.data.email" 
+											name="email"
 											type="email" 
 											placeholder="Your email address"
+											v-model="form.data.email" 
 											:background-color="inputColor" 
-											:rules="form.rules.email" 
-											required 
+											:rules="[form.rules.required, form.rules.email]" 
 											outlined />
 									</v-col>
 								</v-row>
@@ -90,11 +89,11 @@
 									</v-col>
 									<v-col cols="5">
 										<v-textarea 
+											name="message"
 											v-model="form.data.message" 
 											placeholder="Type message here"
 											:background-color="inputColor" 
-											:rules="form.rules.message" 
-											required 
+											:rules="[form.rules.required, form.rules.message]" 
 											counter 
 											outlined />
 									</v-col>
@@ -109,6 +108,8 @@
 											@click="sendMessage" 
 											color="white" 
 											:disabled="!form.valid"
+											:readonly="form.data.processing"
+											:loading="form.data.processing" 
 											x-large 
 											outlined 
 											rounded>
@@ -127,6 +128,10 @@
 
 <script>
 export default {
+	remember: {
+        data: ['form.data'],
+        key: 'contact'
+    },
 	computed: {
 		sheetColor() {
 			return this.$vuetify.theme.dark === true ? '#161616' : 'primary'
@@ -138,34 +143,47 @@ export default {
 	data() {
 		return {
 			form: {
-				valid: true,
+				valid: false,
+				url: this.route('contact.form'),
+				rules: {
+					required: v => !!v || 'Required',
+					message: v => v.length <= 1000 || 'Message must be less than 1000 characters',
+					name: v => v.length <= 35 || 'Name is too long',
+					email: v => {
+						const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+						return pattern.test(v) || 'Invalid email address'
+					},
+				},
 				data: this.$inertia.form({
 					name: '',
 					email: '',
 					message: ''
-				}),
-				rules: {
-					name: [
-						v => !!v || 'Name is required',
-						v => v.length >= 5 || 'Name is too short',
-						v => v.length <= 35 || 'Name is too long',
-					],
-					email: [
-						v => /.+@.+/.test(v) || 'E-mail must be valid'
-					],
-					message: [
-						v => !!v || 'Message is required', 
-						v => v.length >= 30 || 'Message must be at least 30 characters',
-						v => v.length <= 1000 || 'Message must be less than 1000 characters'
-					]
-				}
+				})
 			}
 		}
 	},
 	methods: {
 		sendMessage() {
-			this.form.data.post('/api/contact')
+			this.form.data.post(this.form.url)
 		}
+	},
+	mounted() {
+		console.log(this.form.url)
 	}
 }
 </script>
+
+<style>
+#contact .text-shine {
+    background: linear-gradient(to right, #2196f3 20%, #ee8098 40%, #54a9ee 60%, #2196f3 80%);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: shine 23s linear infinite;
+    animation: shine 23s linear infinite;
+}
+</style>

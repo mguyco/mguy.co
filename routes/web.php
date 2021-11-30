@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,7 +18,6 @@ use App\Models\Tag;
 |
 */
 
-// the one and only
 Route::get('/', function () {
     $wakatime = Http::acceptJson()->get('https://wakatime.com/share/@icyhotmike/79af2e76-635c-4647-a645-a262085d0e53.json');
 
@@ -26,4 +26,7 @@ Route::get('/', function () {
         'tags' => Tag::all(),
         'wakadata' => $wakatime['data']
     ]);
-});
+})->name('home');
+
+
+Route::post('/contact', 'ContactFormController@store')->name('contact.form');

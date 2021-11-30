@@ -5,6 +5,8 @@ Vue.use(VueScroll)
 
 export default {
     methods: {
+        route: window.route,
+        
         setActiveSection(section) {
             this.$store.commit('item', { 
                 key: 'activeSection', 

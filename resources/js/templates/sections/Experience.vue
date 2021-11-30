@@ -6,9 +6,11 @@
 			<v-row>
 				<v-col align="center">
 					<div 
-						class="font-shadows-into-light text-shadow mt-3 primary--text" 
+						class="font-shadows-into-light" 
 						:style="`font-size:${ $vuetify.breakpoint.width > 800 ? 72 : 44 }px`">
-						Experience
+						<div class="text-shadow text-shine">
+							Experience
+						</div>
 					</div>
 				</v-col>
 			</v-row>
@@ -23,7 +25,7 @@
 					<v-card :class="isMobile() ? '' : 'pa-5'">
 						<v-card-title>
 							<h1 class="font-architects-daughter">
-								<div class="text-gradient">
+								<div class="text-shadow">
 									Skills
 								</div>
 							</h1>
@@ -75,7 +77,7 @@
 					<v-card :class="isMobile() ? '' : 'pa-5'">
 						<v-card-title>
 							<h1 class="font-architects-daughter">
-								<div class="text-gradient">
+								<div class="text-shadow">
 									History
 								</div>
 							</h1>
@@ -118,7 +120,7 @@
 							<v-row>
 								<v-col cols="6">
 									<h1 class="font-architects-daughter">
-										<div class="text-gradient">
+										<div class="text-shadow">
 											WakaTime
 										</div>
 									</h1>
@@ -168,7 +170,6 @@
 							</v-row>
 						</v-card-text>
 					</v-card>
-					
 				</v-col>
 			</v-row>
 			<v-row class="mt-15 ml-5 pa-5" justify="space-around">
@@ -288,26 +289,15 @@ export default {
 	letter-spacing: 3px;
 }
 
-#experience .text-gradient {
-    background: linear-gradient(to right, #888 20%, #888 40%, #ccc 60%, #888 80%);
+#experience .text-shine {
+    background: linear-gradient(to right, #2196f3 20%, #43f18c 40%, #54a9ee 60%, #2196f3 80%);
     background-size: 200% auto;
     color: #000;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-animation: shine 5s linear infinite;
-    animation: shine 5s linear infinite;
-}
-
-@-webkit-keyframes shine {
-  to {
-    background-position: 200% center;
-  }
-}
-@keyframes shine {
-  to {
-    background-position: 200% center;
-  }
+    -webkit-animation: shine 8s linear infinite;
+    animation: shine 8s linear infinite;
 }
 </style>

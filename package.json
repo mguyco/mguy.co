@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "mix": "run watch",
     "dev": "npm run development",
     "development": "mix",
     "hot": "mix watch --hot",
@@ -13,14 +14,13 @@
     "@inertiajs/inertia": "^0.10.1",
     "@inertiajs/inertia-vue": "^0.7.2",
     "babel-loader": "^8.2.2",
-    "browser-sync": "^2.27.5",
     "vue-scrollto": "^2.20.0",
-    "vuetify": "^2.5.8",
-    "vuex": "^3.4.0"
+    "vuetify": "^2.6.0",
+    "vuex": "^3.6.0"
   },
   "devDependencies": {
     "axios": "^0.21",
-    "bootstrap": "^5.1.0",
+    "browser-sync": "^2.27.5",
     "browser-sync-webpack-plugin": "^2.3.0",
     "laravel-mix": "^6.0.28",
     "sass": "^1.37.5",
