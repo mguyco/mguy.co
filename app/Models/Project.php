@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use App\Models\Tag;
 use App\Models\ProjectTag;
 
@@ -44,5 +45,9 @@ class Project extends Model
     public function getTagsAttribute()
     {
         return $this->hasMany(ProjectTag::class)->get();
+    }
+
+    public function getDescriptionAttribute() {
+        return Str::markdown($this->attributes['description']);
     }
 }

@@ -17,8 +17,8 @@ const mix = require('laravel-mix');
     .postCss('resources/css/app.css', 'public/css')
     .browserSync({
         proxy: 'localhost',
-        open: true
-        //tunnel: true,
+        open: false,
+        tunnel: true,
         //https: true
     })
     .version()

@@ -59,7 +59,7 @@
                         </v-list-item-avatar>
                         <v-list-item-content>
                             <v-list-item-title class="text-body-h6">
-                                {{ item.url.replace('https://','') }}
+                                {{ item.url.replace('https://','').replace('mailto:','') }}
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -69,24 +69,18 @@
         <template 
             v-if="isMobile()"
             v-slot:extension>
-            <v-row 
-                class="mb-10 mt-3"
-                no-gutters>
-                <v-col 
-                    :align="$vuetify.breakpoint.width < 600 ? 'center' : ''"
-                    :offset="$vuetify.breakpoint.width > 600 ? 4 : ''">
-                    <v-btn 
-                        v-for="item in sections" 
-                        class="mr-2 mt-2" 
-                        :color="(item == activeSection ? 'primary' : 'grey')" 
-                        :key="item" 
-                        @click="goToSection(item)"
-                        text
-                        :small="$vuetify.breakpoint.width > 600"
-                        :x-small="$vuetify.breakpoint.width < 600">
-                        {{ item }}
-                    </v-btn>
-                </v-col>
+            <v-row class="mt-7 mb-14" justify="center">
+                <v-btn 
+                    v-for="item in sections" 
+                    class="mr-2 mt-2" 
+                    :color="(item == activeSection ? 'primary' : 'grey')" 
+                    :key="item" 
+                    @click="goToSection(item)"
+                    text
+                    :small="$vuetify.breakpoint.width > 400"
+                    :x-small="$vuetify.breakpoint.width < 400">
+                    {{ item }}
+                </v-btn>
             </v-row>
         </template>
     </v-app-bar>
@@ -120,7 +114,8 @@ export default {
                 open: null,
                 items: [
                     { icon: 'github', url: 'https://github.com/mguyco' },
-                    { icon: 'linkedin', url: 'https://linkedin.com/in/mguyco' }
+                    { icon: 'linkedin', url: 'https://linkedin.com/in/mguyco' },
+                    { icon: 'gmail', url: 'mailto:mguy.co@gmail.com' },
                 ]
             }
         }

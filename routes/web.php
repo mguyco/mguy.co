@@ -23,10 +23,11 @@ Route::get('/', function () {
 
     return Inertia::render('App', [
         'projects' => Project::all(),
-        'tags' => Tag::all(),
         'wakadata' => $wakatime['data']
     ]);
 })->name('home');
 
 
-Route::post('/contact', 'ContactFormController@store')->name('contact.form');
+Route::post('/contact', 'ContactFormController@store')
+->middleware('throttle:1,1')
+    ->name('contact.form');

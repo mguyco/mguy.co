@@ -20,64 +20,39 @@
 				<v-row>
 					<v-col cols="12">
 						<!-- mobile view -->
-						<v-timeline 
-							v-if="isMobile()" 
-							dense 
-							small 
-							align-top>
-							<v-timeline-item 
+						<div v-if="isMobile()">
+							<v-row
 								v-for="project in projects"
-								class="pb-10 pr-3 project-item mobile" 
 								:key="`project-${project.id}`"
-								:color="project.color">
-								<div :class="`text-h6 font-weight-light ${project.color}--text project-title`">
-									{{ project.title }}
-								</div>
-								<div class="text-caption">
-									<span 
-										v-for="(vendor,index) in project.tags.filter(item => item.data.isVendor)"
-										:key="vendor.data.name">
-										<v-icon 
-											v-if="index > 0 || project.tags.filter(item => item.data.isVendor).length == 1" 
-											class="pb-1"
-											:color="project.color"
-											small>
-											mdi-menu-right
-										</v-icon>
-										<a 
-											:href="vendor.data.url"
-											class="project-vendor" 
-											target="_blank">
-											{{ vendor.data.name}}
-										</a>
-									</span>
-								</div>
-								<div class="project-description">
-									<span v-html="project.description" />
-								</div>
-								<div class="pt-3">
-									<v-chip 
-										v-for="tag in project.tags.filter(item => !item.data.isVendor)"
-										class="mx-1 project-tag" 
-										:key="`project-${project.id}-tag-${tag.tag_id}`" 
-										:color="project.color"
-										dark
-										label
-										small>
-										{{ tag.data.name }}
-									</v-chip>
-								</div>
-							</v-timeline-item>
-						</v-timeline>
+								justify="center" 
+								class="mt-10">
+								<v-sheet 
+									height="698"
+									color="transparent">
+									<v-img src="https://i.ibb.co/VvYhZvC/project-frame-phone.png" />
+									<!--
+									<a 
+										:href="project.url"
+										target="_blank">
+										<v-img 
+											:class="`float-${(index % 2 === 0 ? 'right' : 'left')} project-photo`"  
+											:src="project.photo" 
+											:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.${$vuetify.theme.dark === true ? '2' : '5'}3))`" 
+										/>
+									</a>
+									-->
+								</v-sheet>
+							</v-row>
+						</div>
 
 						<!-- desktop view -->
 						<v-timeline 
-							align-top 
-							v-else>
+							v-else 
+							align-top>
 							<v-timeline-item 
 								v-for="(project, index) in projects"
-								:class="`pb-15 mb-15 project-item ${$vuetify.theme.dark === true ? 'dark' : ''}`" 
 								:key="`project-${project.id}`"
+								:class="`pb-15 mb-15 project-item ${$vuetify.theme.dark === true ? 'dark' : ''}`" 
 								:color="project.color"
 								small
 								fill-dot>
@@ -89,10 +64,11 @@
 										@click="project.color = randomColor()" />
 								</template>
 								<template v-slot:opposite>
-									<div :class="`text-h3 font-weight-thin ${project.color}--text project-title d-none`">
+									<!--
+									<div :class="`text-h3 font-weight-thin ${project.color}--text project-title`">
 										{{ project.title }}
 									</div>
-									<div class="text-body-1 d-none">
+									<div class="text-body-1">
 										<span 
 											v-for="(vendor,index) in project.tags.filter(item => item.data.isVendor)"
 											:key="vendor.data.name">
@@ -110,22 +86,21 @@
 											</a>
 										</span>
 									</div>
-									<div>
-										<a 
-											:href="project.url"
-											target="_blank">
-											<v-img 
-												:class="`float-${(index % 2 === 0 ? 'right' : 'left')} project-photo`"  
-												:src="project.photo" 
-												:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.${$vuetify.theme.dark === true ? '2' : '5'}3))`" 
-											/>
-										</a>
+									-->
+									<div :class="`float-${(index % 2 === 0 ? 'right' : 'left')}`">
+										<img 
+											class="project-photo-frame" 
+											src="https://i.ibb.co/VvYhZvC/project-frame-phone.png"
+											:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.${$vuetify.theme.dark === true ? '3' : '8'}3))`" />
+										
+										<img class="project-photo-img"
+											src="https://i.ibb.co/jvthGR0/project-picture-desktop-torque-vue.png" />
 									</div>
 								</template>
 								<v-card class="px-5 py-2">
 									<v-card-text>
 										<div class="project-description">
-											<span v-html="project.description.replaceAll('<a href', '<a class=\'' + project.color + '--text text--darken-1\' href')" />
+											<span v-html="project.description.replaceAll('<a href', '<a target=\'_blank\' class=\'' + project.color + '--text text--darken-1\' href')" />
 										</div>
 										<div class="mt-5">
 											<v-chip 
@@ -222,46 +197,61 @@ export default {
 </script>
 
 <style>
-.project-item {
+#projects .project-item {
 	transition: all 0.7s linear;
 }
 
-.project-item .project-vendor,
-.project-item .project-description a {
+#projects .project-item .project-vendor,
+#projects .project-item .project-description a {
 	color: rgba(55,55,55,0.5);
 	transition: all 1s
 }
  
-.project-item .project-vendor:hover,
-.project-item .project-description a:hover {
+#projects .project-item .project-vendor:hover,
+#projects .project-item .project-description a:hover {
 	color: rgba(55,55,55,0.75);
 	transition: all 1s
 }
 
-.project-item.dark .project-vendor,
-.project-item.dark .project-description a {
+#projects .project-item.dark .project-vendor,
+#projects .project-item.dark .project-description a {
 	color: rgba(255,255,255,0.5);
 	transition: all 1s
 }
  
-.project-item.dark .project-vendor:hover,
-.project-item.dark .project-description a:hover {
+#projects .project-item.dark .project-vendor:hover,
+#projects .project-item.dark .project-description a:hover {
 	color: rgba(255,255,255,1);
 	transition: all 1s
 }
 
-.project-item .color-picker {
+#projects .project-item .color-picker {
 	cursor: pointer;
 }
 
-.project-item .project-description {
+#projects .project-item .project-description {
 	font-family: 'Roboto', sans-serif;
 	font-size: 20px;
 	line-height: 1.6;
 	font-weight: 300;
 }
 
-.project-item.mobile .project-description {
+#projects .project-item .project-photo-img {
+	position: absolute;
+	margin-left: -239px;
+	margin-top: 47px;
+	height: 350px;
+	width: 222px;
+	border-radius: 7px;
+}
+
+#projects .project-item .project-photo-frame {
+	position: relative;
+	height: 446px;
+	width: 258px;
+}
+
+#projects .project-item.mobile .project-description {
 	font-size: 1rem;
 }
 

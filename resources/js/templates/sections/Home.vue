@@ -3,39 +3,37 @@
         id="home" 
         v-intersect="onIntersect">
         <v-container>
-            <v-row align="start">
+            <v-row 
+                align="start" 
+                justify="center">
                 <v-col 
-                    :sm="(sectionHeight < 600 ? 4 : 12)" 
-                    md="10"
-                    offset-md="1" 
-                    lg="6" 
-                    offset-lg="3"
-                    xl="6"
-                    offset-xl="3">
+                    cols="10"
+                    lg="5">
                     <v-img 
                         :width="`${(isMobile() ? (sectionHeight < 600 ? 150 : 200) : iconWidth)}px`"   
                         class="worker-icon" 
                         height="auto" 
                         src="https://i.ibb.co/cYtrv6b/worker.png" />
                 </v-col>
+            </v-row>
+            <v-row 
+                align="start" 
+                justify="center">
                 <v-col 
-                    :sm="(sectionHeight < 600 ? 8 : 12)" 
-                    md="10"
-                    offset-md="1" 
-                    lg="6" 
-                    offset-lg="3"
-                    xl="6"
-                    offset-xl="3">
-                    <div :class="`text-${(isMobile() ? 'h6' : 'h4')} px-2`">
-                        Full-Stack Software Engineer
+                    cols="10"
+                    lg="5"
+                    class="px-5">
+                    <div :class="`text-${(isMobile() ? 'h6' : 'h4')}`">
+                        {{ titleText }}
                     </div>
-                    <div :class="`text-${(isMobile() ? 'body-1' : 'h6')} font-weight-light mt-1 px-2`">
-                        For the last 5 years, I have been developing full-stack web apps fueled by workflow redesigns with a strength for building smart user experiences. 
-                        I am currently open to new opportunities that can leverage my skills and bring my experience to the next level.
+                    <div :class="`text-${(isMobile() ? 'body-1' : 'h6')} font-weight-light mt-1`">
+                        <p>
+                            {{ subText }}
+                        </p>
                     </div>
                 </v-col>
             </v-row>
-            <v-row class="mt-10">
+            <v-row>
                 <v-col align="center">
                     <v-btn 
                         @click="goToSection('experience')"
@@ -44,7 +42,7 @@
                         rounded 
                         dark
                         large>
-                        Learn more about me
+                        {{ buttonText }}
                     </v-btn>
                 </v-col>
             </v-row>
@@ -61,6 +59,9 @@ export default {
     },
     data() {
         return {
+            titleText: 'Full-Stack Software Engineer',
+            subText: 'For the last 5 years, I have been developing full-stack web apps with a strength for building smart user experiences. I am currently open to new opportunities that can help bring my experience to the next level.',
+            buttonText: 'Learn more about me',
             sectionHeight: 0,
             iconWidth: 175
         }

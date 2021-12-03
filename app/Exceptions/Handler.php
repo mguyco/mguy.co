@@ -46,26 +46,18 @@ class Handler extends ExceptionHandler
      * @return \Throwable
      */
 
-     /*
     public function render($request, Throwable $e)
     {
         $response = parent::render($request, $e);
 
-        if(in_array($response->status(), [500, 503, 404, 403])) {
-            return Inertia::render('error', [
-                    'status' => $response->status()
-            ])
-            ->toResponse($request)
-            ->setStatusCode($response->status());
-        }
+        $status = (string) $response->status();
 
-        else if ($response->status() === 419) {
-            return back()->with([
-                'message' => 'The page expired, please try again.',
-            ]);
-        }
-
-        return $response;
+        return back()->with([
+            'snackbar' => [
+                'color' => 'error',
+                'message' => __('http.' . $status),
+                'timeout' => 10000
+            ]
+        ]);
     }
-    */
 }

@@ -8,6 +8,16 @@
             <span class="text-body-1">
                 {{ snackbar.message }}
             </span>
+            <template v-slot:action="{ attrs }">
+                <v-btn
+                    v-bind="attrs"
+                    @click="$page.props.flash.snackbar = null" 
+                    icon>
+                    <v-icon small>
+                        mdi-close
+                    </v-icon>
+                </v-btn>
+            </template>
         </v-snackbar>
     </v-slide-y-transition>
 </template>

@@ -1,28 +1,31 @@
 <!-- inertia render from 'routes/web.php' -->
 <template>
-    <v-app>
+    <v-app :class="isMobile() ? 'mobile' : ''">
         <AppBar />
-        <ThemeSwitchFab />
+        <Fab />
         <Snackbar />
-        
+
         <v-main>
             <Home />
-                <SectionDivider />
+                <Divider />
             <Experience />
-                <SectionDivider />
+                <Divider />
             <Projects />
-                <SectionDivider />
+                <Divider />
             <Contact />
         </v-main>
+
+        <Footer />
     </v-app>
 </template>
 
 <script>
 // layout
 import AppBar from './components/AppBar'
-import SectionDivider from './components/SectionDivider'
-import ThemeSwitchFab from './components/ThemeSwitchFab'
+import Divider from './components/Divider'
+import Fab from './components/Fab'
 import Snackbar from './components/Snackbar'
+import Footer from './components/Footer'
 
 // sections
 import Home from './sections/Home'
@@ -39,9 +42,10 @@ export default {
     components: {
         // layout
         AppBar,
-        SectionDivider,
-        ThemeSwitchFab,
+        Divider,
+        Fab,
         Snackbar,
+        Footer,
         // sections
         Home,
         Experience,
@@ -51,25 +55,20 @@ export default {
     created() {
         this.setProjects(this.projects)
 
+        // store wakatime data in vuex
         this.$store.commit('item', {
             key: 'wakadata',
             value: this.wakadata
         })
 
-        // check if device is using dark colors
+        // check if device prefers dark colors
         const deviceTheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-        // match device colors with vuetify theme
+        // enable dark theme if true
         if(deviceTheme.matches) {
             this.$vuetify.theme.dark = true
         }
     },
-    mounted() {
-
-    },
-    methods: {
-
-    }
 }
 </script>
 
