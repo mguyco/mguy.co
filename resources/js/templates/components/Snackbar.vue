@@ -1,6 +1,7 @@
 <template>
     <v-slide-y-transition v-if="snackbar !== null">
         <v-snackbar
+            id="snackbar"
             :value="true"
             :color="snackbar.color"
             :timeout="snackbar.timeout"

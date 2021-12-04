@@ -1,6 +1,6 @@
 <!-- inertia render from 'routes/web.php' -->
 <template>
-    <v-app :class="isMobile() ? 'mobile' : ''">
+    <v-app :class="`${isMobile() ? 'mobile' : ''}`">
         <AppBar />
         <Fab />
         <Snackbar />
@@ -79,6 +79,36 @@ a {
 
 .text-shadow {
     text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+}
+
+.stripe {
+	background: repeating-linear-gradient(
+		-55deg,
+		#fff,
+		#fafafa 10px,
+		#f9f9f9 10px,
+		#fcfcfc 20px
+	);
+}
+
+.theme--dark .stripe {
+	background: repeating-linear-gradient(
+		-55deg,
+		#1a1a1a,
+		#222 10px,
+		#1e1e1e 10px,
+		#222 20px
+	);
+}
+
+.grayscale {
+    filter: grayscale(1);
+    transition: all 1s linear;
+}
+
+.grayscale:hover {
+    filter: grayscale(0);
+    transition: all 1s linear;
 }
 
 @-webkit-keyframes shine {

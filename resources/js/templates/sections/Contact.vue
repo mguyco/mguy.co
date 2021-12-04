@@ -12,9 +12,9 @@
 				<div 
 					class="font-shadows-into-light" 
 					:style="`font-size:${ $vuetify.breakpoint.width > 800 ? 50 : 32 }px`">
-					<div class="text-shine text-shadow">
-						Want to know more? Let's talk
-					</div>
+					<div 
+						class="text-shine text-shadow" 
+						v-html="`Want to know more? ${isMobile() ? '<br />' : ''} Let's talk :)`" />
 				</div>
 				<v-img 
 					class="my-5"

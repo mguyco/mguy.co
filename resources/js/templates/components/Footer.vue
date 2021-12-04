@@ -1,10 +1,10 @@
 <template>
-
-    <v-footer :color="`${color} darken-2`">
-        
+    <v-footer 
+        id="footer" 
+        :color="`${color} darken-2`">
         <v-card 
-            color="transparent" 
             class="text-center"
+            color="transparent" 
             width="100%"
             flat
             tile>
@@ -31,7 +31,7 @@
 export default {
     computed: {
         color() {
-            return this.$vuetify.theme.dark === true ? 'secondary' : 'primary'
+            return this.isDark() ? 'secondary' : 'primary'
         }
     }
 }

@@ -1,6 +1,7 @@
 <template>
     <v-app-bar 
-        :class="`app-bar ${$vuetify.theme.dark ? 'dark' : 'white'}`"
+        id="appbar" 
+        :class="`app-bar ${isDark() ? 'dark' : 'white'}`"
         :height="`${(isMobile() ? 70 : 120)}px`" 
         elevate-on-scroll 
         app>
@@ -16,7 +17,7 @@
             <v-btn 
                 v-for="item in sections" 
                 :key="item" 
-                :color="(item == activeSection ? 'primary' : 'grey')" 
+                :class="item == activeSection ? 'primary--text active' : ''" 
                 @click="goToSection(item)" 
                 class="mr-2" 
                 text
@@ -29,7 +30,6 @@
         <v-menu
             v-model="menu.open"
             :close-on-content-click="false"
-            :nudge-width="200"
             offset-y 
             offset-x>
             <template v-slot:activator="{ on, attrs }">
@@ -43,16 +43,16 @@
             </template>
 
             <v-card> 
-                <v-list>
+                <v-list :dense="isMobile()">
                     <v-list-item 
                         v-for="item in menu.items"
                         :key="item.icon"
                         :href="item.url"
                         target="_blank" 
-                        class="primary--text gray-to-color">
+                        class="primary--text grayscale">
                         <v-list-item-avatar>
                             <v-avatar>
-                                <v-icon color="primary" large>
+                                <v-icon color="primary">
                                     mdi-{{ item.icon }}
                                 </v-icon>
                             </v-avatar>
@@ -69,11 +69,10 @@
         <template 
             v-if="isMobile()"
             v-slot:extension>
-            <v-row class="mt-7 mb-14" justify="center">
+            <v-row class="mt-10 mb-14" justify="center">
                 <v-btn 
                     v-for="item in sections" 
-                    class="mr-2 mt-2" 
-                    :color="(item == activeSection ? 'primary' : 'grey')" 
+                    :class="`mr-2 mt-2 ${item == activeSection ? 'primary--text active' : ''}`" 
                     :key="item" 
                     @click="goToSection(item)"
                     text
@@ -123,32 +122,8 @@ export default {
 }
 </script>
 
-<style scoped>
-.app-bar.dark {
+<style>
+.theme--dark #appbar {
     background: #121212 !important;
 }
-
-.gray-to-color {
-    filter: grayscale(1) !important;
-    transition: all 1s linear;
-}
-
-.gray-to-color:hover {
-    filter: grayscale(0) !important;
-    transition: all 1s linear;
-}
-
-/*
-.app-bar .text-shine {
-    background: linear-gradient(to left, #2196f3 20%, #7eebab 60%, #54a9ee 70%, #2196f3 80%);
-    background-size: 200% auto;
-    color: #000;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-animation: shine 15s linear infinite;
-    animation: shine 15s linear infinite;
-}
-*/
 </style>

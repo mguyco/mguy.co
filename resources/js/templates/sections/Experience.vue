@@ -91,7 +91,7 @@
 							</h1>
 						</v-card-title>
 						<v-card-text>
-							<v-list>
+							<v-list color="transparent">
 								<v-list-item
 									v-for="item in history"
 									:key="item.title">

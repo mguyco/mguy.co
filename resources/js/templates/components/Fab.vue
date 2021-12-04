@@ -1,5 +1,5 @@
 <template>
-    <div class="fab">
+    <div id="fab">
         <v-tooltip left>
             <template v-slot:activator="{ on }">
                 <v-icon 
@@ -11,13 +11,13 @@
                     mdi-weather-night
                 </v-icon>
             </template>
-            Turn the lights {{ $vuetify.theme.dark === true ? 'on' : 'off' }}
+            Turn the lights {{ isDark() ? 'on' : 'off' }}
         </v-tooltip>
     </div>
 </template>
 
-<style scoped>
-div.fab {
+<style>
+#fab {
     position: fixed;
     bottom: 23px;
     right: 23px;
