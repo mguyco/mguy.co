@@ -70222,7 +70222,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"private":true,"scripts":{"mix":"run watch","dev":"npm run development","development":"mix","hot":"mix watch --hot","prod":"npm run production","production":"mix --production","watch":"mix watch","watch-poll":"mix watch -- --watch-options-poll=1000","postinstall":"npm run production"},"dependencies":{"@inertiajs/inertia":"^0.10.1","@inertiajs/inertia-vue":"^0.7.2","babel-loader":"^8.2.2","vue-scrollto":"^2.20.0","vuetify":"^2.6.0","vuex":"^3.6.0"},"devDependencies":{"axios":"^0.21","browser-sync":"^2.27.5","browser-sync-webpack-plugin":"^2.3.0","laravel-mix":"^6.0.28","sass":"^1.37.5","sass-loader":"^12.1.0","vue":"^2.6.12","vue-cli-plugin-vuetify":"~2.4.2","vue-loader":"^15.9.8","vue-template-compiler":"^2.6.12","vuetify-loader":"^1.7.0"}}');
+module.exports = JSON.parse('{"private":true,"scripts":{"mix":"run watch","dev":"npm run development","development":"mix","hot":"mix watch --hot","prod":"npm run production","production":"mix --production","watch":"mix watch","watch-poll":"mix watch -- --watch-options-poll=1000","heroku-postbuild":"npm run production"},"dependencies":{"@inertiajs/inertia":"^0.10.1","@inertiajs/inertia-vue":"^0.7.2","babel-loader":"^8.2.2","vue-scrollto":"^2.20.0","vuetify":"^2.6.0","vuex":"^3.6.0"},"devDependencies":{"axios":"^0.21","browser-sync":"^2.27.5","browser-sync-webpack-plugin":"^2.3.0","laravel-mix":"^6.0.28","sass":"^1.37.5","sass-loader":"^12.1.0","vue":"^2.6.12","vue-cli-plugin-vuetify":"~2.4.2","vue-loader":"^15.9.8","vue-template-compiler":"^2.6.12","vuetify-loader":"^1.7.0"}}');
 
 /***/ })
 
