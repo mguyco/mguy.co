@@ -12737,7 +12737,7 @@ var render = function () {
                                           (_vm.isDark() ? "3" : "8") +
                                           "3))",
                                         attrs: {
-                                          src: "",
+                                          src: project.photo,
                                           width: "180px",
                                           height: "auto",
                                           contain: "",

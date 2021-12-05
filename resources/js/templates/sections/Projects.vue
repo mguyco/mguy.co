@@ -31,7 +31,7 @@
 									grow>
 									<img 
 										class="project-photo-img"
-										src=""
+										:src="project.photo"
 										width="180px"
 										height="auto" 
 										:style="`border-radius:23px;filter: drop-shadow(0rem 0rem 1rem rgba(${colorToRGB(project.color)}, 0.${isDark() ? '3' : '8'}3))`"
