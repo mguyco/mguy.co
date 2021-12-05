@@ -14,6 +14,7 @@ class CreateProjectTagsTable extends Migration
     public function up()
     {
         Schema::create('project_tags', function (Blueprint $table) {
+            $table->id();
             $table->integer('project_id')->unsigned()->
                 references('id')->
                 on('projects')->
