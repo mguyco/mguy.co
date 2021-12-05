@@ -31,7 +31,7 @@
 									grow>
 									<img 
 										class="project-photo-img"
-										src="https://i.ibb.co/jvthGR0/project-picture-desktop-torque-vue.png"
+										src=""
 										width="180px"
 										height="auto" 
 										:style="`border-radius:23px;filter: drop-shadow(0rem 0rem 1rem rgba(${colorToRGB(project.color)}, 0.${isDark() ? '3' : '8'}3))`"
@@ -107,8 +107,9 @@
 											src="https://i.ibb.co/VvYhZvC/project-frame-phone.png"
 											:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.${isDark() ? '3' : '8'}3))`" />
 										
-										<img class="project-photo-img"
-											src="https://i.ibb.co/jvthGR0/project-picture-desktop-torque-vue.png" />
+										<img 
+											class="project-photo-img"
+											:src="project.photo" />
 									</div>
 								</template>
 								<v-card class="px-5 py-2 stripe">

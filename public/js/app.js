@@ -3146,6 +3146,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -12736,7 +12737,7 @@ var render = function () {
                                           (_vm.isDark() ? "3" : "8") +
                                           "3))",
                                         attrs: {
-                                          src: "https://i.ibb.co/jvthGR0/project-picture-desktop-torque-vue.png",
+                                          src: "",
                                           width: "180px",
                                           height: "auto",
                                           contain: "",
@@ -12975,9 +12976,7 @@ var render = function () {
                                                 _c("img", {
                                                   staticClass:
                                                     "project-photo-img",
-                                                  attrs: {
-                                                    src: "https://i.ibb.co/jvthGR0/project-picture-desktop-torque-vue.png",
-                                                  },
+                                                  attrs: { src: project.photo },
                                                 }),
                                               ]
                                             ),

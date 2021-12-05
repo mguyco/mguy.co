@@ -1,16 +1,9 @@
 [
     {
         "title": "Torque Vue",
-        "description": "Torque Vue is a modern web dashboard for Torque Pro users that analyzes your vehicles real-time OBD2 data to calculate trends and record trips that can be viewed anywhere on any device. Get service reminder notifications and view your vehicles health report card. Track your fleet or whatever is in your driveway - quickly toggle between vehicles and compare data between your rides. You must have the Torque Pro app installed onto your device and connected to your vehicles OBD2 port before registering an account with Torque Vue.",
-        "photo": "https://i.ibb.co/8PBKjnD/New-Project-1.png",
+        "description": "[Torque Vue](https://github.com/mguyco/torque) is a modern web dashboard that analyzes your vehicles real-time OBD2 data to calculate trends and record trips that can be viewed anywhere on any device. Get service reminder notifications and view your vehicles health report card. Track your fleet or whatever is in your driveway - quickly toggle between vehicles and compare data between your rides. This app uses data provided by [Torque Pro](https://torque-bhp.com).",
+        "photo": "https://i.ibb.co/jvthGR0/project-picture-desktop-torque-vue.png",
         "url": "https://github.com/mguyco/torque",
         "repository": "https://github.com/mguyco/torque"
-    },
-    {
-        "title": "mguy.co",
-        "description": "This website was my first dive into building a Laravel Sail application. The frontend is built in VueJS and uses the Vuetify. The frontend is glued to the laravel backend using InertiaJS. I deployed my website using the Laravel Forge platform that runs on a DigitalOcean droplet.",
-        "photo": "https://i.ibb.co/8PBKjnD/New-Project-1.png",
-        "url": "https://github.com/mguyco/torque",
-        "repository": "https://github.com/mguyco/mguy.co"
     }
 ]
