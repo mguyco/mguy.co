@@ -31,7 +31,7 @@
 export default {
     computed: {
         color() {
-            return this.isDark() ? 'secondary' : 'primary'
+            return this.$vuetify.theme.dark === true ? 'secondary' : 'primary'
         }
     }
 }

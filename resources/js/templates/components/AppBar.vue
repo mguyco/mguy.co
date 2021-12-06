@@ -1,7 +1,7 @@
 <template>
     <v-app-bar 
         id="appbar" 
-        :class="`app-bar ${isDark() ? 'dark' : 'white'}`"
+        class="app-bar"
         :height="`${(isMobile() ? 70 : 120)}px`" 
         elevate-on-scroll 
         app>

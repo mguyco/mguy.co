@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="{{ env('APP_NAME') }}" />
     <meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}" />
-    <meta name="msapplication-starturl" content="/index.html" />
+    <meta name="msapplication-starturl" content="/index.php" />
     <meta name="author" content="{{ env('APP_NAME') }}" />
     <meta name="description" content="{{ env('APP_DESCRIPTION') }}" />
     <meta name="keywords" content="{{ env('APP_KEYWORDS') }}" />

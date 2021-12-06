@@ -25,7 +25,7 @@
 		<v-row no-gutters>
 			<v-col>
 				<v-sheet
-					:color="this.isDark() ? 'secondary darken-2' : 'primary'"
+					:color="$vuetify.theme.dark === true ? 'secondary darken-2' : 'primary'"
 					class="py-15"
 					dark>
 					<v-form v-model="form.valid">
@@ -96,7 +96,7 @@
 										align="center">
 										<v-btn
 											@click="sendMessage" 
-											:color="form.valid ? 'success' : 'error'" 
+											:color="form.valid ? 'success lighten-3' : 'error'" 
 											:readonly="!form.valid" 
 											:disabled="!form.valid && form.data.name == ''"
 											:loading="form.data.processing" 

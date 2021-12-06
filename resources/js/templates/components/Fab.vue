@@ -11,7 +11,7 @@
                     mdi-weather-night
                 </v-icon>
             </template>
-            Turn the lights {{ isDark() ? 'on' : 'off' }}
+            Turn the lights {{ $vuetify.theme.dark === true ? 'on' : 'off' }}
         </v-tooltip>
     </div>
 </template>

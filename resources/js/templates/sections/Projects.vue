@@ -34,7 +34,7 @@
 										:src="project.photo"
 										width="180px"
 										height="auto" 
-										:style="`border-radius:23px;filter: drop-shadow(0rem 0rem 1rem rgba(${colorToRGB(project.color)}, 0.${isDark() ? '3' : '8'}3))`"
+										:style="`border-radius:23px;filter: drop-shadow(0rem 0rem 1rem rgba(${colorToRGB(project.color)}, 0.${$vuetify.theme.dark === true ? '3' : '8'}3))`"
 										@click="openProject(project)"
 										contain />
 								</v-col>
@@ -56,7 +56,7 @@
 											v-for="tag in dialog.project.tags.filter(item => !item.data.isVendor)"
 											class="mx-1 text-caption project-tag" 
 											:key="`project-${dialog.project.id}-tag-${tag.tag_id}`" 
-											:color="`${dialog.project.color} darken-${isDark() ? 3 : 1}`"
+											:color="`${dialog.project.color} darken-${$vuetify.theme.dark === true ? 3 : 1}`"
 											:href="tag.data.url"
 											target="_blank" 
 											dark
@@ -105,7 +105,7 @@
 										<img 
 											class="project-photo-frame" 
 											src="https://i.ibb.co/VvYhZvC/project-frame-phone.png"
-											:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.${isDark() ? '3' : '8'}3))`" />
+											:style="`filter: drop-shadow(0rem 0rem 2rem rgba(${colorToRGB(project.color)}, 0.${$vuetify.theme.dark === true ? '3' : '8'}3))`" />
 										
 										<img 
 											class="project-photo-img"
@@ -124,7 +124,7 @@
 												v-for="tag in project.tags.filter(item => !item.data.isVendor)"
 												class="mx-1 text-body-2 project-tag" 
 												:key="`project-${project.id}-tag-${tag.tag_id}`" 
-												:color="`${project.color} darken-${isDark() ? 3 : 1}`"
+												:color="`${project.color} darken-${$vuetify.theme.dark === true ? 3 : 1}`"
 												:href="tag.data.url"
 												target="_blank" 
 												dark

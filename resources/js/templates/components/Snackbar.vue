@@ -5,7 +5,8 @@
             :value="true"
             :color="snackbar.color"
             :timeout="snackbar.timeout"
-            class="pa-2">
+            class="pa-2"
+            top>
             <span class="text-body-1">
                 {{ snackbar.message }}
             </span>

@@ -39,9 +39,6 @@ export default {
         isMobile() {
             return this.$vuetify.breakpoint.mobile
         },
-        isDark() {
-            return this.$vuetify.theme.dark
-        },
         toggleDark() {
             this.$vuetify.theme.dark = !this.$vuetify.theme.dark
         },
