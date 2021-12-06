@@ -42,6 +42,9 @@ export default {
         isDark() {
             return this.$vuetify.theme.dark
         },
+        toggleDark() {
+            this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+        },
         colorName(name) {
 			return name.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`)
 		},

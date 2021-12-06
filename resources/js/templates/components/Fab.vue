@@ -7,7 +7,7 @@
                     color="yellow"
                     :large="!isMobile()"
                     :small="isMobile()"
-                    @click="$vuetify.theme.dark = !$vuetify.theme.dark" >
+                    @click="toggleDark()" >
                     mdi-weather-night
                 </v-icon>
             </template>

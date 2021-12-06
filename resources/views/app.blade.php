@@ -3,12 +3,17 @@
 <head>
 <title>{{ env('APP_NAME') }}</title>
     <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="{{ env('APP_NAME') }}" />
     <meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}" />
     <meta name="msapplication-starturl" content="/index.html" />
+    <meta name="author" content="{{ env('APP_NAME') }}" />
+    <meta name="description" content="{{ env('APP_DESCRIPTION') }}" />
+    <meta name="keywords" content="{{ env('APP_KEYWORDS') }}" />
+    <link rel="canonical" href="{{ env('APP_URL') }}" />
 
     <!-- csrf token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

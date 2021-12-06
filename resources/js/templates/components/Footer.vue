@@ -15,11 +15,11 @@
                 <div class="mt-1">
                     <v-chip 
                         :color="color"
-                        href="https://www.mguy.co"
+                        href="https://www.mguy.dev"
                         target="_blank" 
                         small 
                         dark>
-                        www.mguy.co
+                        www.mguy.dev
                     </v-chip>
                 </div>
             </v-card-text>

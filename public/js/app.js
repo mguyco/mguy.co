@@ -2538,9 +2538,6 @@ __webpack_require__.r(__webpack_exports__);
     key: 'contact'
   },
   computed: {
-    sheetColor: function sheetColor() {
-      return this.$vuetify.theme.dark === true ? 'secondary darken-2' : 'primary';
-    },
     inputColor: function inputColor() {
       return '';
     }
@@ -3326,6 +3323,9 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use((vue_scrollto__WEBPACK_IMPORTED_
     },
     isDark: function isDark() {
       return this.$vuetify.theme.dark;
+    },
+    toggleDark: function toggleDark() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
     },
     colorName: function colorName(name) {
       return name.replace(/[A-Z]/g, function (letter) {
@@ -11349,7 +11349,7 @@ var render = function () {
                         },
                         on: {
                           click: function ($event) {
-                            _vm.$vuetify.theme.dark = !_vm.$vuetify.theme.dark
+                            return _vm.toggleDark()
                           },
                         },
                       },
@@ -11440,7 +11440,7 @@ var render = function () {
                   {
                     attrs: {
                       color: _vm.color,
-                      href: "https://www.mguy.co",
+                      href: "https://www.mguy.dev",
                       target: "_blank",
                       small: "",
                       dark: "",
@@ -11448,7 +11448,7 @@ var render = function () {
                   },
                   [
                     _vm._v(
-                      "\n                    www.mguy.co\n                "
+                      "\n                    www.mguy.dev\n                "
                     ),
                   ]
                 ),
@@ -11653,7 +11653,10 @@ var render = function () {
                 "v-sheet",
                 {
                   staticClass: "py-15",
-                  attrs: { color: _vm.sheetColor, dark: "" },
+                  attrs: {
+                    color: this.isDark() ? "secondary darken-2" : "primary",
+                    dark: "",
+                  },
                 },
                 [
                   _c(
@@ -12824,10 +12827,7 @@ var render = function () {
                                                         _vm.dialog.project
                                                           .color +
                                                         " darken-" +
-                                                        (_vm.$vuetify.theme
-                                                          .dark === true
-                                                          ? 3
-                                                          : 1),
+                                                        (_vm.isDark() ? 3 : 1),
                                                       href: tag.data.url,
                                                       target: "_blank",
                                                       dark: "",

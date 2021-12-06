@@ -56,7 +56,7 @@
 											v-for="tag in dialog.project.tags.filter(item => !item.data.isVendor)"
 											class="mx-1 text-caption project-tag" 
 											:key="`project-${dialog.project.id}-tag-${tag.tag_id}`" 
-											:color="`${dialog.project.color} darken-${$vuetify.theme.dark === true ? 3 : 1}`"
+											:color="`${dialog.project.color} darken-${isDark() ? 3 : 1}`"
 											:href="tag.data.url"
 											target="_blank" 
 											dark

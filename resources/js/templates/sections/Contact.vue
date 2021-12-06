@@ -25,7 +25,7 @@
 		<v-row no-gutters>
 			<v-col>
 				<v-sheet
-					:color="sheetColor"
+					:color="this.isDark() ? 'secondary darken-2' : 'primary'"
 					class="py-15"
 					dark>
 					<v-form v-model="form.valid">
@@ -123,9 +123,6 @@ export default {
         key: 'contact'
     },
 	computed: {
-		sheetColor() {
-			return this.$vuetify.theme.dark === true ? 'secondary darken-2' : 'primary'
-		},
 		inputColor() {
 			return '';
 		}
