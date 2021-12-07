@@ -42,11 +42,11 @@
         .font-architects-daughter { font-family: 'Architects Daughter', cursive; }
     </style>
 
-    <!-- ziggy -->
-    @routes
-
     <!-- recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+
+    <!-- ziggy -->
+    @routes
 </head>
 <body>
     <!-- inertiaJS -->
