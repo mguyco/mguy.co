@@ -88,6 +88,17 @@
 									</v-col>
 								</v-row>
 								<v-row 
+									justify="center" 
+									no-gutters>
+									<v-col 
+										align="center"
+										cols="10"
+										lg="6"
+										xl="6">
+										<div id="google-recaptcha" />
+									</v-col>
+								</v-row>
+								<v-row 
 									class="mt-10"
 									justify="center" 
 									align="center">
@@ -98,7 +109,7 @@
 											@click="sendMessage" 
 											:color="form.valid ? 'success lighten-3' : 'error'" 
 											:readonly="!form.valid" 
-											:disabled="!form.valid && form.data.name == ''"
+											:disabled="!form.valid || form.data.token == ''"
 											:loading="form.data.processing" 
 											x-large 
 											outlined 
@@ -145,20 +156,34 @@ export default {
 				data: this.$inertia.form({
 					name: '',
 					email: '',
-					message: ''
+					message: '',
+					token: ''
 				})
 			}
 		}
 	},
 	methods: {
 		sendMessage() {
-			if(!this.form.valid) return false
+			if(!this.form.valid || this.form.data.token == '') return false
 
 			this.form.data.post(this.form.url, { 
 				preserveScroll: true
 			})
+		},
+		renderRecaptcha() {
+			grecaptcha.render('google-recaptcha', {
+                'sitekey': process.env.MIX_RECAPTCHA_KEY,
+                'theme': this.$vuetify.theme.dark === true ? 'dark' : 'light',
+				'callback': this.validateToken
+            });
+		},
+		validateToken() {
+			this.form.data.token = grecaptcha.getResponse().toString()
 		}
 	},
+	mounted() {
+		setTimeout(() => this.renderRecaptcha(), 500)
+	}
 }
 </script>
 

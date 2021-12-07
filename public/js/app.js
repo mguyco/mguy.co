@@ -2533,6 +2533,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   remember: {
     data: ['form.data'],
@@ -2566,18 +2577,36 @@ __webpack_require__.r(__webpack_exports__);
         data: this.$inertia.form({
           name: '',
           email: '',
-          message: ''
+          message: '',
+          token: ''
         })
       }
     };
   },
   methods: {
     sendMessage: function sendMessage() {
-      if (!this.form.valid) return false;
+      if (!this.form.valid || this.form.data.token == '') return false;
       this.form.data.post(this.form.url, {
         preserveScroll: true
       });
+    },
+    renderRecaptcha: function renderRecaptcha() {
+      grecaptcha.render('google-recaptcha', {
+        'sitekey': "6LcK7YUdAAAAABHLapTHhifFoIxfG5hNiocIpOli",
+        'theme': this.$vuetify.theme.dark === true ? 'dark' : 'light',
+        'callback': this.validateToken
+      });
+    },
+    validateToken: function validateToken() {
+      this.form.data.token = grecaptcha.getResponse().toString();
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    setTimeout(function () {
+      return _this.renderRecaptcha();
+    }, 500);
   }
 });
 
@@ -3289,6 +3318,7 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].use((vue_scrollto__WEBPACK_IMPORTED_MODULE_0___default()));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
+    // ziggy
     route: window.route,
     setActiveSection: function setActiveSection(section) {
       this.$store.commit('item', {
@@ -3333,8 +3363,9 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use((vue_scrollto__WEBPACK_IMPORTED_
     randomColor: function randomColor() {
       var colorsAvailable = Object.keys(Object.assign({}, vuetify_lib_util_colors__WEBPACK_IMPORTED_MODULE_2__["default"]));
       var index = Math.floor(Math.random() * (colorsAvailable.length - 1));
-      var color = this.colorName(colorsAvailable[index].toString());
-      var skip = ['black', 'brown', 'white', 'grey', 'blue-grey', 'yellow', 'lime'];
+      var color = this.colorName(colorsAvailable[index].toString()); // don't use these colors
+
+      var skip = ['black', 'blue-grey', 'brown', 'grey', 'lime', 'white', 'yellow'];
       if (skip.includes(color)) return this.randomColor();
       return color;
     },
@@ -11850,6 +11881,35 @@ var render = function () {
                               _c(
                                 "v-row",
                                 {
+                                  attrs: {
+                                    justify: "center",
+                                    "no-gutters": "",
+                                  },
+                                },
+                                [
+                                  _c(
+                                    "v-col",
+                                    {
+                                      attrs: {
+                                        align: "center",
+                                        cols: "10",
+                                        lg: "6",
+                                        xl: "6",
+                                      },
+                                    },
+                                    [
+                                      _c("div", {
+                                        attrs: { id: "google-recaptcha" },
+                                      }),
+                                    ]
+                                  ),
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-row",
+                                {
                                   staticClass: "mt-10",
                                   attrs: { justify: "center", align: "center" },
                                 },
@@ -11867,8 +11927,8 @@ var render = function () {
                                               : "error",
                                             readonly: !_vm.form.valid,
                                             disabled:
-                                              !_vm.form.valid &&
-                                              _vm.form.data.name == "",
+                                              !_vm.form.valid ||
+                                              _vm.form.data.token == "",
                                             loading: _vm.form.data.processing,
                                             "x-large": "",
                                             outlined: "",
@@ -70265,7 +70325,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"private":true,"scripts":{"mix":"run watch","dev":"npm run development","development":"mix","hot":"mix watch --hot","prod":"npm run production","production":"mix --production","watch":"mix watch","watch-poll":"mix watch -- --watch-options-poll=1000","heroku-postbuild":"npm run production"},"dependencies":{"@inertiajs/inertia":"^0.10.1","@inertiajs/inertia-vue":"^0.7.2","babel-loader":"^8.2.2","vue-scrollto":"^2.20.0","vuetify":"^2.6.0","vuex":"^3.6.0"},"devDependencies":{"axios":"^0.21","browser-sync":"^2.27.5","browser-sync-webpack-plugin":"^2.3.0","laravel-mix":"^6.0.28","sass":"^1.37.5","sass-loader":"^12.1.0","vue":"^2.6.12","vue-cli-plugin-vuetify":"~2.4.2","vue-loader":"^15.9.8","vue-template-compiler":"^2.6.12","vuetify-loader":"^1.7.0"}}');
+module.exports = JSON.parse('{"private":true,"scripts":{"mix":"run watch","dev":"npm run development","development":"mix","hot":"mix watch --hot","prod":"npm run production","production":"mix --production","watch":"mix watch","watch-poll":"mix watch -- --watch-options-poll=1000","heroku-postbuild":"npm run production"},"dependencies":{"@inertiajs/inertia":"^0.10.1","@inertiajs/inertia-vue":"^0.7.2","babel-loader":"^8.2.2","vue-scrollto":"^2.20.0","vue2-recaptchav3":"^1.0.7","vuetify":"^2.6.0","vuex":"^3.6.0"},"devDependencies":{"axios":"^0.21","browser-sync":"^2.27.5","browser-sync-webpack-plugin":"^2.3.0","laravel-mix":"^6.0.28","sass":"^1.37.5","sass-loader":"^12.1.0","vue":"^2.6.12","vue-cli-plugin-vuetify":"~2.4.2","vue-loader":"^15.9.8","vue-template-compiler":"^2.6.12","vuetify-loader":"^1.7.0"}}');
 
 /***/ })
 

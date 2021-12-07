@@ -6,6 +6,7 @@ Vue.use(VueScroll)
 
 export default {
     methods: {
+        // ziggy
         route: window.route,
         
         setActiveSection(section) {
@@ -50,14 +51,16 @@ export default {
 
 			const index = Math.floor(Math.random() * (colorsAvailable.length - 1))
 			const color = this.colorName(colorsAvailable[index].toString())
+
+            // don't use these colors
 			const skip = [
 				'black',
-				'brown',
+                'blue-grey',
+                'brown',
+                'grey',
+                'lime',
 				'white',
-				'grey',
-				'blue-grey',
 				'yellow',
-				'lime'
 			]
 
 			if(skip.includes(color)) return this.randomColor()

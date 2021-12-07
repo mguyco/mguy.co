@@ -44,6 +44,9 @@
 
     <!-- ziggy -->
     @routes
+
+    <!-- recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
 </head>
 <body>
     <!-- inertiaJS -->

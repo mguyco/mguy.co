@@ -18,7 +18,8 @@ class ContactFormController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string',
-            'message' => 'required|string'
+            'message' => 'required|string',
+            'token' => 'required|string'
         ]);
 
         $snackbar = (object) [
@@ -32,11 +33,23 @@ class ContactFormController extends Controller
 
         else {
             // verify IP is not suspicious
-            //$whois = Http::acceptJson()->get('https://ipwhois.app/json/' . $request->ip());
-            $whois = Http::acceptJson()->get('https://ipwhois.app/json/24.63.112.52');
+            $whois = Http::get(env('WHOIS_URL') . $request->ip());
 
             // no success
             if(empty($whois['success'])) $error = 'There was a problem verifying your client IP address';
+        }
+
+        // google recaptcha
+        $recaptcha = Http::post(env('RECAPTCHA_URL'), [
+            'secret' => env('RECAPTCHA_SECRET'),
+            'response' => $request->token,
+            'remoteip' => $request->ip()
+        ]);
+
+        if(empty($recaptcha['success'])) $error = 'There was a problem verifying if you are a robot or not';
+
+        if(!$recaptcha['success']) {
+            $error = 'It appears you are a robot!';
         }
 
         if($error) {
