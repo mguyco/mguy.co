@@ -8,7 +8,6 @@
     <meta name="robots" content="index, follow" />
     <meta name="referer" content="origin" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" />
-    <meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="{{ env('APP_NAME') }}" />
