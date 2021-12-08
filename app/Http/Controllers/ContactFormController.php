@@ -33,8 +33,8 @@ class ContactFormController extends Controller
 
         else {
             // verify IP is not suspicious
-            //$whois = Http::get(env('WHOIS_URL') . $request->ip());
-            $whois = Http::get('https://ipwhois.app/json/24.63.112.52');
+            $whois = Http::get(env('WHOIS_URL') . $request->ip());
+            //$whois = Http::get('https://ipwhois.app/json/24.63.112.52');
 
             // no success
             if(empty($whois['success'])) $error = 'There was a problem verifying your client IP address';
