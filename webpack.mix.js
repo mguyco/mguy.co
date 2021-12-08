@@ -21,4 +21,7 @@ const mix = require('laravel-mix');
         //tunnel: true,
         //https: true
     })
-    .version()
+
+    if(mix.inProduction()) {
+        mix.version()
+    }

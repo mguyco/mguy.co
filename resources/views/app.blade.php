@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-<title>{{ env('APP_NAME') }}</title>
+    <title>{{ env('APP_NAME') }}</title>
     <meta charset="utf-8" />
+    <meta http-equiv="Cache-control" content="private, no-store, no-cache, must-revalidate, proxy-revalidate" />
+    <meta http-equiv="Expires" content="Sat, 05 Nov 1955 00:00:00 EST" />
     <meta name="robots" content="index, follow" />
+    <meta name="referer" content="origin" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" />
+    <meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="{{ env('APP_NAME') }}" />
@@ -41,6 +45,10 @@
         .font-shadows-into-light { font-family: 'Shadows Into Light', cursive; }
         .font-architects-daughter { font-family: 'Architects Daughter', cursive; }
     </style>
+
+    <!-- icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/ZKMDhdV/m-icon.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="192x192" href="https://i.ibb.co/4SVQT44/m-icon.png" />
 
     <!-- recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>

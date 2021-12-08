@@ -1,4 +1,5 @@
 //window._ = require('lodash');
+import { register } from 'register-service-worker'
 
 process.env.VUE_APP_VERSION = require('./../../package.json').version
 
@@ -12,30 +13,32 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-/**
- * Workbox / ServiceWorker
- 
- if('serviceWorker' in navigator) {
-    // Use the window load event to keep the page load performant
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js');
-    });
+
+if (process.env.NODE_ENV === 'production') {
+  register(`${process.env.BASE_URL}service-worker.js`, {
+    ready () {
+      console.log(
+        'App is being served from cache by a service worker.\n' +
+        'For more details, visit https://goo.gl/AFskqB'
+      )
+    },
+    registered () {
+      console.log('Service worker has been registered.')
+    },
+    cached () {
+      console.log('Content has been cached for offline use.')
+    },
+    updatefound () {
+      console.log('New content is downloading.')
+    },
+    updated () {
+      console.log('New content is available; please refresh.')
+    },
+    offline () {
+      console.log('No internet connection found. App is running in offline mode.')
+    },
+    error (error) {
+      console.error('Error during service worker registration:', error)
+    }
+  })
 }
-*/
-
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-
-// import Echo from 'laravel-echo';
-
-// window.Pusher = require('pusher-js');
-
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });

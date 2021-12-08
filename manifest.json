@@ -1,0 +1,22 @@
+{
+  "short_name": "mguy.dev",
+  "name": "Michael Guy",
+  "icons": [
+    {
+      "src": "/images/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#2196F3",
+  "description": "Full Stack Software Engineer"
+}
