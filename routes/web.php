@@ -29,5 +29,5 @@ Route::get('/', function () {
 
 
 Route::post('/contact', 'ContactFormController@store')
-->middleware('throttle:1,1')
-    ->name('contact.form');
+->name('contact.form');
+   // ->middleware('throttle:1,1')
