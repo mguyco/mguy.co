@@ -107,7 +107,7 @@
 										align="center">
 										<v-btn
 											@click="sendMessage" 
-											:color="form.valid ? 'success lighten-3' : 'error'" 
+											:color="form.valid ? 'success lighten-2' : 'error'" 
 											:readonly="!form.valid" 
 											:disabled="!form.valid || form.data.token == ''"
 											:loading="form.data.processing" 

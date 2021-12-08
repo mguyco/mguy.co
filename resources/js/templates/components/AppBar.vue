@@ -123,7 +123,11 @@ export default {
 </script>
 
 <style>
-.theme--dark #appbar {
-    background: #121212 !important;
+.theme--dark.v-app-bar.v-toolbar.v-sheet {
+    background: #121212;
+}
+
+.theme--light.v-app-bar.v-toolbar.v-sheet {
+    background: #fff;
 }
 </style>
