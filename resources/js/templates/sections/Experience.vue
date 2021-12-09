@@ -319,6 +319,11 @@ export default {
     animation: shine 8s linear infinite;
 }
 
+#experience svg {
+	transform: scale(1.25);
+	transition: all 1s linear;
+}
+
 /* mobile fixes */
 .mobile #experience .v-card {
 	padding: 3px;
