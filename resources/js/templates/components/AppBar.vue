@@ -45,7 +45,7 @@
             <v-card> 
                 <v-list :dense="isMobile()">
                     <v-list-item 
-                        v-for="item in menu.items"
+                        v-for="item in links"
                         :key="item.icon"
                         :href="item.url"
                         target="_blank" 
@@ -105,17 +105,15 @@ export default {
         },
         sections() {
             return this.$store.getters.item('sections')
+        },
+        links() {
+            return this.$store.getters.item('links')
         }
     },
     data() {
         return {
             menu: {
-                open: null,
-                items: [
-                    { icon: 'github', url: 'https://github.com/mguyco' },
-                    { icon: 'linkedin', url: 'https://linkedin.com/in/mguyco' },
-                    { icon: 'gmail', url: 'mailto:mguy.co@gmail.com' },
-                ]
+                open: null
             }
         }
     }

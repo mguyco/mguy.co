@@ -3,5 +3,10 @@ export const state = {
     activeSection: 'home',
     sections: ['home','experience','projects','contact'],
     projects: [],
-    wakadata: []
+    wakadata: [],
+    links: [
+        { icon: 'github', url: 'https://github.com/mguyco' },
+        { icon: 'linkedin', url: 'https://linkedin.com/in/mguyco' },
+        { icon: 'gmail', url: 'mailto:mguy.co@gmail.com' },
+    ]
 }

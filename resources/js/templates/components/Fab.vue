@@ -23,4 +23,9 @@
     right: 23px;
     z-index: 10000;
 }
+
+.mobile #fab {
+    bottom: 43px;
+    right: 33px;
+}
 </style>
