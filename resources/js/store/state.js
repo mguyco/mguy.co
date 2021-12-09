@@ -7,6 +7,6 @@ export const state = {
     links: [
         { icon: 'github', url: 'https://github.com/mguyco' },
         { icon: 'linkedin', url: 'https://linkedin.com/in/mguyco' },
-        { icon: 'gmail', url: 'mailto:mguy.co@gmail.com' },
+        { icon: 'gmail', url: 'mailto:hello@mguy.dev' },
     ]
 }

@@ -3444,7 +3444,7 @@ var state = {
     url: 'https://linkedin.com/in/mguyco'
   }, {
     icon: 'gmail',
-    url: 'mailto:mguy.co@gmail.com'
+    url: 'mailto:hello@mguy.dev'
   }]
 };
 
