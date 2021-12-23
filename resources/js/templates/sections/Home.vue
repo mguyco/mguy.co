@@ -59,9 +59,9 @@ export default {
     },
     data() {
         return {
-            titleText: 'Full-Stack Software Engineer',
-            subText: 'For the last 5 years, I have been developing full-stack web apps with a strength for building smart user experiences. I am currently open to new opportunities that can help bring my experience to the next level.',
-            buttonText: 'Learn more about me',
+            titleText: process.env.MIX_HOMEPAGE_TITLE,
+            subText: process.env.MIX_HOMEPAGE_TEXT,
+            buttonText: process.env.MIX_HOMEPAGE_BUTTON,
             sectionHeight: 0,
             iconWidth: 175
         }
