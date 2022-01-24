@@ -94,7 +94,7 @@
 							<v-list color="transparent">
 								<v-list-item
 									v-for="item in history"
-									:key="item.title">
+									:key="item.subtitle">
 									<v-list-item-action>
 										<v-img
 											:class="item.image.width == 44 ? `ml-${isMobile() ? 2 : 4} mr-1` : ''"
@@ -205,6 +205,7 @@
 export default {
 	computed: {
 		wakadata() {
+			// only show wakatime results with percent value of 1 or higher
 			return this.$store.state.wakadata.filter(item => item.percent >= 1)
 		}
 	},
@@ -234,21 +235,21 @@ export default {
 		this.history = [
 			{
 				title: 'Senior Software Engineer',
-				subtitle: 'Developing smart full-stack applications',
-				from: '2017',
+				subtitle: 'CloudCall - Boston, MA',
+				from: '2022',
 				to: 'Present',
 				image: {
-					url: 'https://i.ibb.co/k9WdWm9/TPX-Communications.png',
-					width: 64,
+					url: 'https://i.ibb.co/YpHRXYp/cropped-Cloud-Call-Logo-512.png',
+					width: 44,
 				}
 			},
 			{
-				title: 'Freelance Web Developer',
-				subtitle: 'Designing and building websites',
-				from: '2006',
-				to: 'Present',
+				title: 'Senior Software Engineer',
+				subtitle: 'TPx - Manchester, NH',
+				from: '2017',
+				to: '2022',
 				image: {
-					url: 'https://www.dynamicssmartz.com/img/user-2.png',
+					url: 'https://i.ibb.co/k9WdWm9/TPX-Communications.png',
 					width: 44,
 				}
 			},
@@ -258,7 +259,17 @@ export default {
 				from: '2011',
 				to: '2013',
 				image: {
-					url: 'https://joinhandshake.com/wp-content/themes/handshake/dist/assets/images/static-site/pages/career-centers/home/badges/northern-essex.png',
+					url: 'https://i.ibb.co/3BsYWCw/northern-essex.png',
+					width: 44,
+				}
+			},
+			{
+				title: 'Freelance Web Developer',
+				subtitle: 'Designing and building custom websites',
+				from: '2006',
+				to: 'Present',
+				image: {
+					url: 'https://i.ibb.co/k0qxqFx/user-2.png',
 					width: 44,
 				}
 			},
@@ -324,7 +335,7 @@ export default {
 	transition: all 1s linear;
 }
 
-/* mobile fixes */
+/* mobile styling */
 .mobile #experience .v-card {
 	padding: 3px;
 }

@@ -16,7 +16,7 @@
     <meta name="author" content="{{ env('APP_NAME') }}" />
     <meta name="description" content="{{ env('APP_DESCRIPTION') }}" />
     <meta name="keywords" content="{{ env('APP_KEYWORDS') }}" />
-    <link rel="canonical" href="{{ env('APP_URL') }}" />
+    <link rel="canonical" href="{{ env('APP_URL') }}">
 
     <!-- csrf token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -29,7 +29,7 @@
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cookie&display=swap">
@@ -46,8 +46,8 @@
     </style>
 
     <!-- icons -->
-    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/ZKMDhdV/m-icon.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="192x192" href="https://i.ibb.co/4SVQT44/m-icon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/ZKMDhdV/m-icon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="192x192" href="https://i.ibb.co/4SVQT44/m-icon.png">
 
     <!-- recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
